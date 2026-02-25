@@ -1,17 +1,31 @@
 # AutoGen Adapter Example
 
-## Mapping
+```ts
+async function runAutogenTaskWithUaicp(task: TaskInput) {
+  const runtime = await autogen.run(task);
 
-- AutoGen task context -> UAICP `MessageEnvelope`
-- Tool call result -> UAICP `EvidenceObject`
-- Group chat completion -> UAICP `VerificationReport`
+  const envelope = mapEnvelopeFromTask(task, runtime);
+  const evidence = normalizeToolEvents(runtime.toolEvents);
+  const verification = runVerifier(envelope, evidence);
 
-## Critical Hook
+  if (!verification.required_checks_passed) {
+    return failSafe('VERIFICATION_FAILED', verification.reason_codes);
+  }
 
-Before final agent reply, run UAICP invariant check:
+  const policy = runPolicyGate({
+    envelope,
+    writeRisk: classifyWriteRisk(task),
+    approvalToken: task.approvalToken,
+  });
 
-- required evidence present
-- required verifiers passed
-- write policy satisfied
+  if (policy.decision !== 'allow') {
+    return failSafe('POLICY_BLOCKED', policy.reasons);
+  }
 
-If not satisfied, emit `fail_safe` output with uncertainty.
+  return deliver(runtime.finalAnswer);
+}
+```
+
+Reference fixture:
+
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`

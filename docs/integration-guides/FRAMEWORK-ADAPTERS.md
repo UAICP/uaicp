@@ -1,41 +1,28 @@
 # Framework Adapters
 
-UAICP is designed to run under existing orchestrators.
+UAICP uses one reliability pattern across multiple frameworks.
 
-## Why This Layer Is Separate
+## Shared Responsibilities
 
-Frameworks optimize for workflow composition and runtime ergonomics.
-UAICP optimizes for portable reliability controls and conformance.
+Every adapter must provide:
 
-This separation allows teams to keep their framework investment while applying one reliability contract across heterogeneous stacks.
+- envelope mapping
+- evidence normalization
+- verifier invocation
+- policy-gated write checks
+- audit event emission
 
-## Integration Pattern
+## Framework Mapping Notes
 
-1. Keep framework planner and tool abstractions.
-2. Add UAICP envelope + evidence contracts.
-3. Route all writes through UAICP policy gate.
-4. Block deliverable output until verifiers pass.
+- LangGraph-style runtimes: use an explicit verify/policy node before terminal delivery.
+- AutoGen: wrap task completion with verifier and policy gates.
+- CrewAI: gate task completion and high-risk side effects with UAICP decisions.
+- OpenAI Agents SDK: wrap run lifecycle events and block delivery on failed gates.
 
-## Supported Adapter Targets (Initial)
+## Validation Expectation
 
-- LangGraph
-- AutoGen
-- CrewAI
-- OpenAI Agents SDK
+Adapter behavior is valid when equivalent inputs produce equivalent gate outcomes (`allow`, `deny`, `needs_review`) as defined by UAICP contracts.
 
-## Expected Deliverables per Adapter
+Reference fixture:
 
-- request mapping table
-- evidence mapping table
-- verifier integration point
-- policy gate hook
-- minimal conformance test run
-
-## Frameworks Covered
-
-Initial guides cover:
-
-- LangGraph
-- Microsoft Agent Framework style runtimes (via generic adapter contract and OpenAI Agents SDK example)
-- AutoGen
-- CrewAI
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`

@@ -1,13 +1,31 @@
 # OpenAI Agents SDK Adapter Example
 
-## Mapping
+```ts
+async function runWithUaicp(input: AgentInput) {
+  const run = await agent.run(input);
 
-- run context -> UAICP envelope
-- function/tool results -> evidence objects
-- run output checks -> verification report
+  const envelope = mapEnvelope(input, run);
+  const evidence = collectRunEvidence(run.toolCalls, run.messages);
+  const verification = runVerifier(envelope, evidence);
 
-## Control Point
+  if (!verification.required_checks_passed) {
+    return failSafe('VERIFICATION_FAILED', verification.reason_codes);
+  }
 
-The adapter must prevent final output emission if required evidence is missing.
+  const policy = runPolicyGate({
+    envelope,
+    writeRisk: classifyWriteRisk(input),
+    approvalToken: input.approvalToken,
+  });
 
-Return structured uncertainty with missing evidence reason codes instead.
+  if (policy.decision !== 'allow') {
+    return failSafe('POLICY_BLOCKED', policy.reasons);
+  }
+
+  return deliver(run.outputText);
+}
+```
+
+Reference fixture:
+
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`

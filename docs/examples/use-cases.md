@@ -1,49 +1,22 @@
-# UAICP Use Cases
+# Use Cases
 
-## 1. Code Change Workflow
+UAICP is designed for workflows where incorrect delivery or uncontrolled writes are high impact.
 
-Goal: prevent unverified merges.
+## Primary Use Cases
 
-Flow:
+- regulated finance operations
+- compliance-sensitive operations requiring replayable audit context
+- high-stakes automation where fail-safe uncertainty is mandatory
 
-1. Plan proposed code edits.
-2. Execute file/tool operations.
-3. Verify with tests + type checks.
-4. Deliver only with evidence bundle:
-   - changed files
-   - test report
-   - verifier summary
+## Finance Workflow Comparison
 
-Fail-safe behavior:
+Reference implementation includes a complete comparison across four implementation styles:
 
-- if tests fail, response is uncertain and no merge action is taken.
+1. manual workflow
+2. framework-native agentic workflow
+3. agent implementation without UAICP
+4. agent implementation with UAICP
 
-## 2. Research Workflow
+Source:
 
-Goal: prevent uncited factual claims.
-
-Flow:
-
-1. Gather sources via retrieval tools.
-2. Normalize evidence objects with source URLs and timestamps.
-3. Cross-check and verify required claims.
-4. Deliver summary with evidence links.
-
-Fail-safe behavior:
-
-- unresolved claims are labeled uncertain.
-
-## 3. High-Risk Operations Workflow
-
-Goal: prevent unapproved production writes.
-
-Flow:
-
-1. classify action as `write_high_risk`.
-2. collect approvals and rollback metadata.
-3. execute action with idempotency key.
-4. run post-action verifier checks.
-
-Fail-safe behavior:
-
-- without approval token, action is blocked.
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`

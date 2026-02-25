@@ -1,37 +1,51 @@
-# UAICP Adapter Contract
+# Adapter Contract
 
-This contract defines the minimum interface for integrating a framework runtime with UAICP invariants.
+Adapters connect framework-native runtime behavior to UAICP reliability controls.
 
-## Adapter Interface
+## Required Adapter Interface
 
-Required methods:
+```ts
+type GateDecision = 'allow' | 'deny' | 'needs_review';
 
-- `to_uaicp_request(input) -> MessageEnvelope`
-- `invoke_tool(call) -> EvidenceObject`
-- `run_verifiers(context) -> VerificationReport`
-- `emit_audit(event) -> void`
+interface UaicpAdapter {
+  mapEnvelope(input: unknown): UaicpEnvelope;
+  collectEvidence(runtimeState: unknown): EvidenceObject[];
+  runVerifier(envelope: UaicpEnvelope, evidence: EvidenceObject[]): VerificationReport;
+  runPolicyGate(params: {
+    envelope: UaicpEnvelope;
+    verification: VerificationReport;
+    writeRisk: 'read_only' | 'write_low_risk' | 'write_high_risk';
+    approvalToken?: string;
+  }): { decision: GateDecision; reasons: string[] };
+  emitAuditEvent(event: UaicpAuditEvent): void;
+}
+```
 
-## Behavioral Requirements
+## Required Gate Order
 
-- Adapters must not bypass invariant checks.
-- Adapters must propagate `request_id` and `trace_id`.
-- Adapters must map framework-native errors to UAICP reason codes.
+```text
+mapEnvelope -> collectEvidence -> runVerifier -> runPolicyGate -> deliver/fail_safe
+```
 
-## Error Mapping
+No delivery should occur before required gates complete.
 
-Minimum reason codes:
+## Minimum Outcome Codes
 
 - `EVIDENCE_MISSING`
 - `VERIFICATION_FAILED`
 - `POLICY_BLOCKED`
 - `APPROVAL_REQUIRED`
+- `IDENTITY_INVALID`
 - `TOOL_TIMEOUT`
 
-## Compatibility
+## Required High-Risk Write Rule
 
-Adapters may expose framework-specific extensions in namespaced fields.
+For high-risk write actions, when approval metadata is absent:
 
-Example:
+- return `needs_review`
+- include reason `APPROVAL_REQUIRED`
+- block side effects
 
-- `framework.langgraph.node_id`
-- `framework.autogen.agent_name`
+## Reference Implementation
+
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`

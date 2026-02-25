@@ -1,13 +1,31 @@
 # CrewAI Adapter Example
 
-## Mapping
+```ts
+async function finalizeCrewTask(taskCtx: CrewTaskContext) {
+  const crewResult = await runCrew(taskCtx);
 
-- Crew task execution metadata -> UAICP envelope identity/trace fields
-- Tool outputs -> evidence objects
-- crew completion status + external checks -> verification report
+  const envelope = mapEnvelope(taskCtx);
+  const evidence = normalizeCrewEvidence(crewResult.steps);
+  const verification = runVerifier(envelope, evidence);
 
-## Control Point
+  if (!verification.required_checks_passed) {
+    return failSafe('VERIFICATION_FAILED', verification.reason_codes);
+  }
 
-Wrap final task completion in UAICP `verify -> deliver` transition.
+  const gate = runPolicyGate({
+    envelope,
+    writeRisk: taskCtx.writeRisk,
+    approvalToken: taskCtx.approvalToken,
+  });
 
-Crew task completion alone is insufficient for delivery when invariants require external evidence.
+  if (gate.decision !== 'allow') {
+    return failSafe('POLICY_BLOCKED', gate.reasons);
+  }
+
+  return deliver(crewResult.output);
+}
+```
+
+Reference fixture:
+
+- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`
