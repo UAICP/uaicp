@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="uaicpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <rect width="400" height="400" rx="90" fill="#0b1121" />
+  
+  <g transform="translate(60, 60)" filter="url(#glow)">
+    <!-- Base Node Ring -->
+    <path d="M 140 20 A 120 120 0 1 0 260 140 A 120 120 0 0 0 140 20 Z" fill="none" stroke="rgba(59, 130, 246, 0.2)" stroke-width="12" />
+    
+    <!-- Connected Inner Nodes -->
+    <path d="M 140 60 L 200 180 L 80 180 Z" fill="none" stroke="url(#uaicpGrad)" stroke-width="16" stroke-linejoin="round" />
+    
+    <!-- Central Control Node / Core -->
+    <circle cx="140" cy="140" r="32" fill="url(#uaicpGrad)" />
+    <!-- Node Connectors -->
+    <circle cx="140" cy="60" r="16" fill="#fff" />
+    <circle cx="200" cy="180" r="16" fill="#fff" />
+    <circle cx="80" cy="180" r="16" fill="#fff" />
+  </g>
+</svg>

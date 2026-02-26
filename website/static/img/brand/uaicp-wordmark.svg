@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="uaicpGradText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap');
+      .wordmark {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        font-size: 110px;
+        fill: url(#uaicpGradText);
+        letter-spacing: -2px;
+      }
+      .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        fill: #94a3b8;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  
+  <g transform="translate(40, 50)">
+    <!-- Small Icon next to wordmark -->
+    <g transform="scale(0.3)">
+      <path d="M 140 60 L 200 180 L 80 180 Z" fill="none" stroke="url(#uaicpGradText)" stroke-width="24" stroke-linejoin="round" />
+      <circle cx="140" cy="140" r="32" fill="url(#uaicpGradText)" />
+      <circle cx="140" cy="60" r="16" fill="#cbd5e1" />
+      <circle cx="200" cy="180" r="16" fill="#cbd5e1" />
+      <circle cx="80" cy="180" r="16" fill="#cbd5e1" />
+    </g>
+    
+    <!-- Wordmark -->
+    <text x="120" y="100" class="wordmark">UAICP</text>
+    <text x="125" y="145" class="subtitle">Universal Control</text>
+  </g>
+</svg>

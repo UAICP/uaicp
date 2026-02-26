@@ -1,11 +1,11 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'UAICP',
   tagline: 'Open reliability contract for agentic workflows',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/brand/uaicp-favicon.svg',
 
   url: 'https://uaicp.org',
   baseUrl: '/',
@@ -54,17 +54,17 @@ const config: Config = {
       title: 'UAICP',
       logo: {
         alt: 'UAICP Logo',
-        src: 'img/logo-cropped.svg',
+        src: 'img/brand/uaicp-logo.svg',
         width: 32,
         height: 32,
       },
       items: [
-        {to: '/docs/specification/introduction', label: 'Specification', position: 'left'},
-        {to: '/docs/integration-guides/overview', label: 'Integration', position: 'left'},
-        {to: '/docs/examples/use-cases', label: 'Examples', position: 'left'},
-        {to: '/docs/governance/overview', label: 'Governance', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {href: 'https://github.com/UAICP/uaicp', label: 'GitHub', position: 'right'},
+        { to: '/docs/specification/introduction', label: 'Specification', position: 'left' },
+        { to: '/docs/integration-guides/overview', label: 'Integration', position: 'left' },
+        { to: '/docs/examples/use-cases', label: 'Examples', position: 'left' },
+        { to: '/docs/governance/overview', label: 'Governance', position: 'left' },
+        { to: '/blog', label: 'Blog', position: 'left' },
+        { href: 'https://github.com/UAICP/uaicp', label: 'GitHub', position: 'right' },
       ],
     },
     footer: {
@@ -73,26 +73,26 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Specification', to: '/docs/specification/introduction'},
-            {label: 'Integration', to: '/docs/integration-guides/overview'},
-            {label: 'Examples', to: '/docs/examples/use-cases'},
+            { label: 'Specification', to: '/docs/specification/introduction' },
+            { label: 'Integration', to: '/docs/integration-guides/overview' },
+            { label: 'Examples', to: '/docs/examples/use-cases' },
           ],
         },
         {
           title: 'Project',
           items: [
-            {label: 'Governance', to: '/docs/governance/overview'},
-            {label: 'Release Status', to: '/docs/governance/status-roadmap'},
-            {label: 'Contributing', to: '/docs/governance/contributing'},
-            {label: 'Blog', to: '/blog'},
+            { label: 'Governance', to: '/docs/governance/overview' },
+            { label: 'Release Status', to: '/docs/governance/status-roadmap' },
+            { label: 'Contributing', to: '/docs/governance/contributing' },
+            { label: 'Blog', to: '/blog' },
           ],
         },
         {
           title: 'Repository',
           items: [
-            {label: 'Monorepo', href: 'https://github.com/UAICP/uaicp'},
-            {label: 'Specification', href: 'https://github.com/UAICP/uaicp/tree/main/specification'},
-            {label: 'Reference Impl', href: 'https://github.com/UAICP/uaicp/tree/main/reference-impl'},
+            { label: 'Monorepo', href: 'https://github.com/UAICP/uaicp' },
+            { label: 'Specification', href: 'https://github.com/UAICP/uaicp/tree/main/specification' },
+            { label: 'Reference Impl', href: 'https://github.com/UAICP/uaicp/tree/main/reference-impl' },
           ],
         },
       ],

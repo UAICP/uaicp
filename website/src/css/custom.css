@@ -1,90 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap');
+/* 
+  UAICP Brand Guidelines & Theming 
+  Primary Colors: Electric Blue (#3b82f6) & Deep Purple (#8b5cf6)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --ifm-color-primary: #0f766e;
-  --ifm-color-primary-dark: #0d665f;
-  --ifm-color-primary-darker: #0c5d57;
-  --ifm-color-primary-darkest: #094842;
-  --ifm-color-primary-light: #148a81;
-  --ifm-color-primary-lighter: #179a90;
-  --ifm-color-primary-lightest: #22b3a7;
+  /* Electric Blue (Primary) */
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
 
-  --ifm-color-secondary: #b45309;
-  --ifm-color-secondary-dark: #9a4708;
-  --ifm-color-secondary-darker: #8f4107;
-  --ifm-color-secondary-darkest: #723305;
-  --ifm-color-secondary-light: #c25e0a;
-  --ifm-color-secondary-lighter: #cd650b;
-  --ifm-color-secondary-lightest: #dd7a21;
+  /* Deep Purple (Secondary) */
+  --ifm-color-secondary: #8b5cf6;
+  --ifm-color-secondary-dark: #7c3aed;
+  --ifm-color-secondary-darker: #6d28d9;
+  --ifm-color-secondary-darkest: #4c1d95;
+  --ifm-color-secondary-light: #a78bfa;
+  --ifm-color-secondary-lighter: #c4b5fd;
+  --ifm-color-secondary-lightest: #ddd6fe;
 
-  --ifm-font-family-base: 'Space Grotesk', 'Helvetica Neue', sans-serif;
-  --ifm-heading-font-family: 'IBM Plex Serif', Georgia, serif;
-  --ifm-code-font-size: 94%;
+  /* Typography */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  
+  --ifm-code-font-size: 90%;
+  --ifm-heading-font-weight: 800;
 
-  --uaicp-gradient: linear-gradient(130deg, #0f766e 0%, #0b4f6c 62%, #0a2f45 100%);
-  --uaicp-surface: #f5f7f6;
+  /* Modern gradients */
+  --uaicp-gradient: linear-gradient(135deg, #0b1121 0%, #172554 100%);
+  --uaicp-gradient-accent: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  
+  /* Brand background colors */
+  --uaicp-surface: #f8fafc;
+  --uaicp-surface-dark: #0b1120;
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #22b3a7;
-  --ifm-color-primary-dark: #1ea297;
-  --ifm-color-primary-darker: #1b988e;
-  --ifm-color-primary-darkest: #16776f;
-  --ifm-color-primary-light: #37beb3;
-  --ifm-color-primary-lighter: #45c4b9;
-  --ifm-color-primary-lightest: #69d2c8;
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+  
+  --uaicp-surface: #0b1120;
+  
+  /* Docusaurus specific dark overrides */
+  --ifm-background-color: var(--uaicp-surface);
+  --ifm-background-surface-color: #0f172a;
+  --ifm-navbar-background-color: rgba(11, 17, 32, 0.85); /* Glassmorphism */
+  --ifm-footer-background-color: #020617;
+}
+
+/* Glassmorphism Navbar Elements */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .navbar__title {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: var(--uaicp-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* Hero Section High-Contrast Styling */
 .hero {
-  background: var(--uaicp-gradient);
+  background: var(--uaicp-surface-dark);
   color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0;
+}
+
+/* Decorative background blur */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -200px;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Button Upgrades */
+.button {
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease-out;
 }
 
 .hero .button--primary {
-  background: var(--ifm-color-secondary);
-  border-color: var(--ifm-color-secondary);
+  background: var(--uaicp-gradient-accent);
+  border: none;
   color: #fff;
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.39);
 }
 
 .hero .button--primary:hover {
-  background: var(--ifm-color-secondary-dark);
-  border-color: var(--ifm-color-secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+  color: #fff;
 }
 
 .hero .button--secondary {
-  border-color: rgba(255, 255, 255, 0.6);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
 }
 
 .hero .button--secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Footer modernizations */
 .footer {
-  background: #0b1720;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #020617; /* Very dark slate */
 }
 
-.footer a {
-  color: #d8ecea !important;
-}
-
-.footer a:hover {
-  color: #ffffff !important;
-}
-
+/* Anchor Links */
 .markdown a,
 article a:not(.button):not(.navbar__item):not(.menu__link) {
   color: var(--ifm-color-primary);
-  text-underline-offset: 3px;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  transition: border-color 0.2s;
 }
 
 .markdown a:hover,
 article a:not(.button):not(.navbar__item):not(.menu__link):hover {
-  color: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary);
+  border-bottom-color: var(--ifm-color-primary);
 }
