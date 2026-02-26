@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Community Forum
+    url: https://community.uaicp.org
+    about: Ask questions and discuss UAICP with the community
+  - name: Technical Support
+    url: https://support.uaicp.org
+    about: Get technical support for UAICP implementation
+  - name: Security Issues
+    url: mailto:security@uaicp.org
+    about: Report security vulnerabilities privately via email

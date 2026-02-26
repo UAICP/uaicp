@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="socialGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#backgroundGradient)"/>
+  
+  <!-- Logo -->
+  <g transform="translate(200, 150)">
+    <!-- Main interlocking U shapes -->
+    <path d="M 50 50 
+             L 50 150
+             Q 50 200, 100 200
+             Q 150 200, 150 150
+             L 150 100" 
+          stroke="url(#socialGradient)" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+    
+    <path d="M 150 75
+             Q 150 25, 200 25
+             Q 250 25, 250 75
+             L 250 125
+             Q 250 175, 200 175
+             Q 150 175, 150 125" 
+          stroke="url(#socialGradient)" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+    
+    <!-- Connection nodes -->
+    <circle cx="50" cy="40" r="12" fill="url(#socialGradient)"/>
+    <circle cx="150" cy="80" r="12" fill="url(#socialGradient)"/>
+    <circle cx="250" cy="60" r="12" fill="url(#socialGradient)"/>
+    <circle cx="200" cy="185" r="12" fill="url(#socialGradient)"/>
+    
+    <!-- Connecting lines -->
+    <line x1="62" y1="40" x2="138" y2="80" stroke="url(#socialGradient)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+    <line x1="162" y1="80" x2="238" y2="60" stroke="url(#socialGradient)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+    <line x1="188" y1="185" x2="150" y2="140" stroke="url(#socialGradient)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  </g>
+  
+  <!-- Title Text -->
+  <text x="500" y="250" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#2d3748">UAICP</text>
+  <text x="500" y="320" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400" fill="#4a5568">Universal Agent Integrity & Control Protocol</text>
+  <text x="500" y="380" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="300" fill="#718096">Open standard for policy-aware coordination</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="1000" cy="150" r="4" fill="url(#socialGradient)" opacity="0.6"/>
+  <circle cx="1050" cy="200" r="6" fill="url(#socialGradient)" opacity="0.4"/>
+  <circle cx="950" cy="220" r="3" fill="url(#socialGradient)" opacity="0.8"/>
+  <circle cx="1100" cy="180" r="5" fill="url(#socialGradient)" opacity="0.5"/>
+</svg>

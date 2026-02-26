@@ -1,0 +1,97 @@
+name: Website Improvement
+description: Suggest an improvement for the UAICP website
+title: "[IMPROVEMENT] "
+labels: ["enhancement", "website"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a website improvement!
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL (if applicable)
+      description: Which page would this improvement affect?
+      placeholder: ex. https://uaicp.org/docs/specification
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: What type of improvement is this?
+      options:
+        - Content Update
+        - Design/UI Improvement
+        - New Feature
+        - Performance Improvement
+        - Accessibility Improvement
+        - SEO Improvement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: What is the current state that you'd like to improve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: Describe your suggested improvement in detail.
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: How would this improvement help users of the website?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this improvement?
+      options:
+        - Low - Nice to have
+        - Medium - Would improve user experience
+        - High - Important for usability
+        - Critical - Accessibility or major usability issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context, screenshots, or examples about the improvement here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/uaicp/uaicp_website/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

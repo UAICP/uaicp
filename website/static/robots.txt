@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://uaicp.org/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Block access to development files
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /*.json
+Disallow: /*.yml
+Disallow: /*.yaml

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap');
+
+:root {
+  --ifm-color-primary: #0f766e;
+  --ifm-color-primary-dark: #0d665f;
+  --ifm-color-primary-darker: #0c5d57;
+  --ifm-color-primary-darkest: #094842;
+  --ifm-color-primary-light: #148a81;
+  --ifm-color-primary-lighter: #179a90;
+  --ifm-color-primary-lightest: #22b3a7;
+
+  --ifm-color-secondary: #b45309;
+  --ifm-color-secondary-dark: #9a4708;
+  --ifm-color-secondary-darker: #8f4107;
+  --ifm-color-secondary-darkest: #723305;
+  --ifm-color-secondary-light: #c25e0a;
+  --ifm-color-secondary-lighter: #cd650b;
+  --ifm-color-secondary-lightest: #dd7a21;
+
+  --ifm-font-family-base: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --ifm-heading-font-family: 'IBM Plex Serif', Georgia, serif;
+  --ifm-code-font-size: 94%;
+
+  --uaicp-gradient: linear-gradient(130deg, #0f766e 0%, #0b4f6c 62%, #0a2f45 100%);
+  --uaicp-surface: #f5f7f6;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #22b3a7;
+  --ifm-color-primary-dark: #1ea297;
+  --ifm-color-primary-darker: #1b988e;
+  --ifm-color-primary-darkest: #16776f;
+  --ifm-color-primary-light: #37beb3;
+  --ifm-color-primary-lighter: #45c4b9;
+  --ifm-color-primary-lightest: #69d2c8;
+}
+
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hero {
+  background: var(--uaicp-gradient);
+  color: #f8fafc;
+}
+
+.hero .button--primary {
+  background: var(--ifm-color-secondary);
+  border-color: var(--ifm-color-secondary);
+  color: #fff;
+}
+
+.hero .button--primary:hover {
+  background: var(--ifm-color-secondary-dark);
+  border-color: var(--ifm-color-secondary-dark);
+}
+
+.hero .button--secondary {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.hero .button--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.footer {
+  background: #0b1720;
+}
+
+.footer a {
+  color: #d8ecea !important;
+}
+
+.footer a:hover {
+  color: #ffffff !important;
+}
+
+.markdown a,
+article a:not(.button):not(.navbar__item):not(.menu__link) {
+  color: var(--ifm-color-primary);
+  text-underline-offset: 3px;
+}
+
+.markdown a:hover,
+article a:not(.button):not(.navbar__item):not(.menu__link):hover {
+  color: var(--ifm-color-primary-dark);
+}

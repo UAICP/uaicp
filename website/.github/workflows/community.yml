@@ -1,0 +1,124 @@
+name: Website Community Engagement Automation
+
+on:
+  issues:
+    types: [opened, closed]
+  pull_request:
+    types: [opened, merged, closed]
+  discussion:
+    types: [created]
+
+jobs:
+  welcome-website-contributor:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: Welcome new contributors to UAICP Website
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Check if this is user's first contribution
+            const { data: contributions } = await github.rest.repos.listContributors({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            
+            const isFirstTime = !contributions.find(c => c.login === context.actor);
+            
+            if (isFirstTime) {
+              const welcomeMessage = `
+              🎉 **Welcome to UAICP Website Repository!** 
+              
+              Thank you for your ${context.eventName === 'issues' ? 'issue' : 'pull request'}! 
+              
+              This appears to be your first contribution to the UAICP website. Here are some helpful resources:
+              
+              - 🌐 [Live Website](https://uaicp.org)
+              - 📖 [Full Documentation](https://uaicp.org/docs)
+              - 🤝 [Contributing Guide](https://uaicp.org/docs/governance/contributing)
+              - 💬 [Community Discussions](https://github.com/UAICP/uaicp_specification/discussions)
+              - 📋 [Main Specification Repo](https://github.com/UAICP/uaicp_specification)
+              - 🧑‍💻 [Slack Workspace](https://uaicp.slack.com)
+              
+              **Website Contribution Focus Areas:**
+              - 🎨 UI/UX improvements
+              - 📱 Mobile responsiveness
+              - 📝 Documentation website content
+              - 🔧 Docusaurus configuration
+              - 🎯 Performance optimizations
+              - ♿ Accessibility enhancements
+              
+              A maintainer will review this soon. Feel free to join our community chat if you have questions about the website!
+              `;
+              
+              if (context.eventName === 'issues') {
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: welcomeMessage
+                });
+              } else {
+                github.rest.pulls.createReview({
+                  pull_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: welcomeMessage,
+                  event: 'COMMENT'
+                });
+              }
+            }
+
+  website-update-notification:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    steps:
+      - name: Process website updates
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prTitle = context.payload.pull_request.title;
+            const prNumber = context.payload.pull_request.number;
+            const prAuthor = context.payload.pull_request.user.login;
+            
+            console.log(`🌐 Website updated by ${prAuthor}`);
+            console.log(`🔄 PR #${prNumber}: ${prTitle}`);
+            
+            // Check what type of website change this was
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+            
+            const changeTypes = {
+              docs: files.filter(f => f.filename.startsWith('docs/')),
+              src: files.filter(f => f.filename.startsWith('src/')),
+              config: files.filter(f => f.filename.includes('config') || f.filename.includes('.yml')),
+              styles: files.filter(f => f.filename.includes('.css') || f.filename.includes('.scss'))
+            };
+            
+            Object.entries(changeTypes).forEach(([type, fileList]) => {
+              if (fileList.length > 0) {
+                console.log(`📝 ${type.toUpperCase()}: ${fileList.length} files changed`);
+              }
+            });
+            
+            // Website changes are automatically deployed via deploy workflow
+            console.log('🚀 Changes will be deployed automatically after tests pass');
+
+  website-discussion-engagement:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'created'
+    steps:
+      - name: Acknowledge website discussions
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log('💬 New discussion created in UAICP website repo');
+            console.log(`👤 Author: ${context.payload.discussion.user.login}`);
+            console.log(`🌐 Title: ${context.payload.discussion.title}`);
+            
+            // Website-specific discussion handling
+            // Could auto-label discussions by topic (UI, docs, deployment, etc.)

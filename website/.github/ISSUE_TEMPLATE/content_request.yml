@@ -1,0 +1,102 @@
+name: Content Request
+description: Request new content or documentation for the website
+title: "[CONTENT] "
+labels: ["content", "documentation"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting new content for the UAICP website!
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: What type of content are you requesting?
+      options:
+        - Documentation
+        - Tutorial/Guide
+        - Example Implementation
+        - Blog Post
+        - FAQ Entry
+        - Case Study
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: content-description
+    attributes:
+      label: Content Description
+      description: Describe the content you'd like to see added to the website.
+    validations:
+      required: true
+
+  - type: textarea
+    id: target-audience
+    attributes:
+      label: Target Audience
+      description: Who would benefit from this content?
+      placeholder: e.g., developers new to UAICP, enterprise implementers, protocol designers
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why is this content needed?
+      description: Explain why this content would be valuable for the UAICP community.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this content?
+      options:
+        - Low - Nice to have
+        - Medium - Would be helpful
+        - High - Important for adoption
+        - Critical - Blocking adoption
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing-resources
+    attributes:
+      label: Existing Resources
+      description: Are there any existing resources or references that could help create this content?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: volunteer
+    attributes:
+      label: Contribution
+      description: Would you be interested in helping create this content?
+      options:
+        - label: I'd be willing to help write this content
+          required: false
+        - label: I can provide technical review
+          required: false
+        - label: I can provide examples or use cases
+          required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/uaicp/uaicp_website/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

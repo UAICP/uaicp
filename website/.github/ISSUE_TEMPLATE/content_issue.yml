@@ -1,0 +1,76 @@
+name: Content Issue
+description: Report issues with website content (typos, outdated info, etc.)
+title: "[CONTENT] "
+labels: ["content", "documentation"]
+body:
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: Content Type
+      description: What type of content issue is this?
+      options:
+        - Typo/Grammar Error
+        - Outdated Information
+        - Missing Information
+        - Incorrect Information
+        - Broken Link
+        - Image Issue
+        - Translation Issue
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      description: What page is the content issue on?
+      placeholder: https://uaicp.org/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Describe the content issue
+      placeholder: Describe what's wrong with the content...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: Copy the current incorrect content (if applicable)
+      placeholder: Paste the current content here...
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggested-content
+    attributes:
+      label: Suggested Correction
+      description: What should the content say instead?
+      placeholder: Provide the corrected content...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any additional information or context
+      placeholder: Any other relevant information...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: verification
+    attributes:
+      label: Verification
+      options:
+        - label: I have verified this information is incorrect/outdated
+          required: true
+        - label: I have checked that this hasn't already been reported
+          required: true
