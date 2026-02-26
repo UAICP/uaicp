@@ -14,6 +14,16 @@ Protocol-level behavior changes must be coordinated in:
 3. Include tests for behavior changes.
 4. Document compatibility impact.
 
+## Local Validation
+
+```bash
+npm ci
+npm run lint
+npm test -- --runInBand
+npm run build
+npm run example:finance
+```
+
 ## Definition of Done
 
 - CI checks pass

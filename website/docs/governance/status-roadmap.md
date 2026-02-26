@@ -33,8 +33,21 @@ For adoption, start with:
 ## Quick Start
 
 ```bash
-# Choose your language
+# Install published packages
 
+# TypeScript
+npm install @uaicp/core @uaicp/adapter-langgraph
+
+# Python
+pip install uaicp-core uaicp-adapter-autogen
+
+# Rust
+cargo add uaicp-core uaicp-adapter-rig
+```
+
+For contributor/source validation in this monorepo:
+
+```bash
 # TypeScript
 cd libs/typescript && npm install && npm test
 

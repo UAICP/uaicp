@@ -16,6 +16,26 @@ For visual component architecture and per-framework flow diagrams, see:
 
 - [Architecture Diagrams](./architecture-diagrams)
 
+## Install From Registries
+
+### TypeScript
+
+```bash
+npm install @uaicp/core @uaicp/adapter-langgraph
+```
+
+### Python
+
+```bash
+pip install uaicp-core uaicp-adapter-autogen
+```
+
+### Rust
+
+```bash
+cargo add uaicp-core uaicp-adapter-rig
+```
+
 ## Common Adapter Responsibilities
 
 Every framework adapter must provide these control points:

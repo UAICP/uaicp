@@ -86,4 +86,32 @@ describe('PolicyEvaluator', () => {
     expect(result.decision).toBe('deny');
     expect(result.reasons).toContain('MISSING_ACTION_OR_RESOURCE');
   });
+
+  test('denies when verification status is fail', () => {
+    const result = PolicyEvaluator.evaluate({
+      identity,
+      action: 'deploy',
+      resource: 'prod:api',
+      writeRisk: 'write_high_risk',
+      approvalToken: 'approved-123',
+      verificationStatus: 'fail'
+    });
+
+    expect(result.decision).toBe('deny');
+    expect(result.reasons).toContain('VERIFICATION_FAILED');
+  });
+
+  test('denies when verification status alias is partial', () => {
+    const result = PolicyEvaluator.evaluate({
+      identity,
+      action: 'deploy',
+      resource: 'prod:api',
+      writeRisk: 'write_high_risk',
+      approvalToken: 'approved-123',
+      verification_status: 'partial'
+    });
+
+    expect(result.decision).toBe('deny');
+    expect(result.reasons).toContain('VERIFICATION_FAILED');
+  });
 });

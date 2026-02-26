@@ -1,0 +1,45 @@
+name: Reference Impl CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "reference-impl/**"
+      - ".github/workflows/reference-impl-ci.yml"
+  pull_request:
+    paths:
+      - "reference-impl/**"
+      - ".github/workflows/reference-impl-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: reference-impl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: reference-impl/.nvmrc
+          cache: npm
+          cache-dependency-path: reference-impl/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test -- --runInBand
+
+      - name: Build
+        run: npm run build
+
+      - name: Finance example
+        run: npm run example:finance

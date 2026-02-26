@@ -8,12 +8,13 @@
     "setup": "npm install",
     "build": "tsc",
     "test": "jest",
-    "lint": "echo \"Linting not configured yet\"",
+    "lint": "tsc --noEmit",
     "example:finance": "npm run build && node dist/examples/finance/run-comparison.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UAICP/uaicp-reference-impl.git"
+    "url": "git+https://github.com/UAICP/uaicp.git",
+    "directory": "reference-impl"
   },
   "keywords": [
     "uaicp",
@@ -34,5 +35,8 @@
   },
   "dependencies": {
     "zod": "^3.22.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

@@ -4,9 +4,15 @@ description = "UAICP Reliability Protocol Adapter for Rig (Rust-native AI Agent 
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+repository.workspace = true
+readme = "README.md"
+homepage = "https://github.com/UAICP/uaicp/tree/main/libs/rust/adapter-rig"
+documentation = "https://docs.rs/uaicp-adapter-rig"
+keywords = ["uaicp", "rig", "agent", "reliability"]
+categories = ["development-tools", "api-bindings"]
 
 [dependencies]
-uaicp-core = { path = "../core" }
+uaicp-core = { version = "0.3.0", path = "../core" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 async-trait = "0.1"

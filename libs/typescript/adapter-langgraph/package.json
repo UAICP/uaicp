@@ -2,15 +2,37 @@
     "name": "@uaicp/adapter-langgraph",
     "version": "0.3.0",
     "description": "UAICP Reliability Protocol Adapter for LangGraph",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/UAICP/uaicp.git",
+        "directory": "libs/typescript/adapter-langgraph"
+    },
+    "homepage": "https://github.com/UAICP/uaicp/tree/main/libs/typescript/adapter-langgraph",
+    "bugs": {
+        "url": "https://github.com/UAICP/uaicp/issues"
+    },
+    "keywords": [
+        "uaicp",
+        "langgraph",
+        "langchain",
+        "agent",
+        "reliability"
+    ],
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "files": [
+        "dist/index.js",
+        "dist/index.d.ts",
+        "README.md"
+    ],
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist",
         "test": "vitest run"
     },
     "dependencies": {
-        "@uaicp/core": "*",
+        "@uaicp/core": "^0.3.0",
         "@langchain/core": "^0.2.0",
         "@langchain/langgraph": "^0.0.28"
     },

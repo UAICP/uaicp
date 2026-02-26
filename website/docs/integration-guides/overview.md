@@ -48,29 +48,37 @@ For component and framework-level diagrams, see:
 
 ## Quick Start
 
-Choose your language:
+Install published packages:
 
 ### TypeScript
 
 ```bash
-cd libs/typescript
-npm install
-npm test
+npm install @uaicp/core @uaicp/adapter-langgraph
 ```
 
 ### Python
 
 ```bash
-cd libs/python
-pip install -e core/ -e adapter-autogen/
-pytest adapter-autogen/tests/
+pip install uaicp-core uaicp-adapter-autogen
 ```
 
 ### Rust
 
 ```bash
-cd libs/rust
-cargo test --workspace
+cargo add uaicp-core uaicp-adapter-rig
+```
+
+For contributor/source validation in this monorepo:
+
+```bash
+# TypeScript
+cd libs/typescript && npm install && npm test
+
+# Python
+cd libs/python && pip install -e core/ -e adapter-autogen/ && pytest adapter-autogen/tests/
+
+# Rust
+cd libs/rust && cargo test --workspace
 ```
 
 ## Definition of Complete Adapter Integration

@@ -4,6 +4,12 @@ description = "UAICP Core Types and Traits — Rust Primitives"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+repository.workspace = true
+readme = "README.md"
+homepage = "https://github.com/UAICP/uaicp/tree/main/libs/rust/core"
+documentation = "https://docs.rs/uaicp-core"
+keywords = ["uaicp", "agent", "reliability", "policy"]
+categories = ["development-tools", "api-bindings"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }

@@ -17,6 +17,7 @@ export interface PolicyEvaluationInput {
   approval_token?: string;
   allowed_control_classes?: ControlClass[];
   trust_tier_allowlist?: string[];
+  verification_status?: 'pass' | 'fail' | 'partial';
 }
 
 export interface PolicyEvaluationResult {
@@ -31,6 +32,7 @@ export class PolicyEvaluator {
     const approvalToken = input.approvalToken ?? input.approval_token;
     const allowedControlClasses = input.allowedControlClasses ?? input.allowed_control_classes;
     const trustTierAllowlist = input.trustTierAllowlist ?? input.trust_tier_allowlist;
+    const verificationStatus = input.verificationStatus ?? input.verification_status;
 
     if (!input.action || !input.resource) {
       return {
@@ -52,17 +54,21 @@ export class PolicyEvaluator {
       }
     }
 
-    if (writeRisk === 'write_high_risk' && !approvalToken) {
-      reasons.push('APPROVAL_REQUIRED');
-      return {
-        decision: 'needs_review',
-        reasons
-      };
+    if (verificationStatus && verificationStatus !== 'pass') {
+      reasons.push('VERIFICATION_FAILED');
     }
 
     if (reasons.length > 0) {
       return {
         decision: 'deny',
+        reasons
+      };
+    }
+
+    if (writeRisk === 'write_high_risk' && !approvalToken) {
+      reasons.push('APPROVAL_REQUIRED');
+      return {
+        decision: 'needs_review',
         reasons
       };
     }

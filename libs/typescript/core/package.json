@@ -2,8 +2,30 @@
     "name": "@uaicp/core",
     "version": "0.3.0",
     "description": "Core UAICP Types and Interfaces",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/UAICP/uaicp.git",
+        "directory": "libs/typescript/core"
+    },
+    "homepage": "https://github.com/UAICP/uaicp/tree/main/libs/typescript/core",
+    "bugs": {
+        "url": "https://github.com/UAICP/uaicp/issues"
+    },
+    "keywords": [
+        "uaicp",
+        "agent",
+        "reliability",
+        "policy",
+        "interop"
+    ],
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "files": [
+        "dist/index.js",
+        "dist/index.d.ts",
+        "README.md"
+    ],
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist"

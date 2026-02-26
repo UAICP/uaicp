@@ -12,6 +12,11 @@ Protocol source of truth:
 
 - [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
+## Prerequisites
+
+- Node.js `20+` (see `.nvmrc`)
+- npm `10+`
+
 ## Implemented Modules
 
 - `src/identity`
@@ -53,6 +58,21 @@ Run tests:
 ```bash
 npm test
 npm run build
+npm run lint
+```
+
+## Quick API Usage
+
+```ts
+import {
+  createSampleFinanceWorkflowInput,
+  runWorkflowComparison,
+} from '@uaicp/uaicp-reference-impl';
+
+const input = createSampleFinanceWorkflowInput();
+const comparison = runWorkflowComparison(input);
+
+console.log(comparison.agent_with_uaicp);
 ```
 
 ## Roadmap Status
