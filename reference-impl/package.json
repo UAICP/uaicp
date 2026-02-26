@@ -1,6 +1,6 @@
 {
   "name": "@uaicp/uaicp-reference-impl",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "UAICP reliability primitives: identity validation and policy evaluation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

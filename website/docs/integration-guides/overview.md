@@ -2,7 +2,7 @@
 
 UAICP integrates as a reliability control layer under your existing orchestration runtime.
 
-This website provides complete integration guidance for `v0.2` implementation.
+This website provides complete integration guidance for `v0.3` implementation.
 
 ## Integration Target
 
@@ -60,6 +60,6 @@ An adapter is complete when it can:
 
 ## Contributor Links
 
-Post-`v0.2` enhancements are tracked in:
+Post-`v0.3` enhancements are tracked in:
 
 - [UAICP Issues](https://github.com/UAICP/uaicp/issues)

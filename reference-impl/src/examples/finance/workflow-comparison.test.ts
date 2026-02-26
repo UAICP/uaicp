@@ -69,7 +69,7 @@ describe('finance workflow comparison', () => {
     const result = runAgentWorkflowWithUaicp(input);
 
     expect(result.decision).toBe('rejected');
-    expect(result.reasons).toContain('EVIDENCE_MISSING:beneficiaryValidated');
+    expect(result.reasons).toContain("Missing required evidence from source: 'beneficiary_kyc'");
   });
 
   test('manual workflow rejects when checklist is incomplete', () => {

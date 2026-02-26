@@ -1,6 +1,6 @@
 # UAICP Roadmap
 
-This roadmap tracks post-`v0.2` enhancements. It is issue-driven and does not use timeline/date commitments.
+This roadmap tracks post-`v0.3` enhancements. It is issue-driven and does not use timeline/date commitments.
 
 ## Complete
 
@@ -10,13 +10,13 @@ This roadmap tracks post-`v0.2` enhancements. It is issue-driven and does not us
 - initial adapter guidance
 - initial reference implementation primitives
 
-## Post-v0.2 Active Work
+## Post-v0.3 Active Work
 
-- normative wording hardening for `v0.2`
+- normative wording hardening for `v0.3`
 - machine-readable conformance harness contract
 - adapter conformance walkthrough artifacts
 
-## Post-v0.2 Backlog
+## Post-v0.3 Backlog
 
 - external conformance report examples
 - reliability maturity profile proposal (`L1/L2/L3`)

@@ -24,7 +24,7 @@ Reference implementation source:
 
 ## Contributor Tracking
 
-Post-`v0.2` enhancements are tracked in GitHub issues:
+Post-`v0.3` enhancements are tracked in GitHub issues:
 
 - [UAICP Issues](https://github.com/UAICP/uaicp/issues)
 

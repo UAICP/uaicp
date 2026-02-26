@@ -7,10 +7,9 @@ type DiagramViewerProps = {
   title?: string;
   mermaid: string;
   minWidth?: number;
-  staticSrc?: string;
 };
 
-export default function DiagramViewer({title, mermaid, minWidth = 760, staticSrc}: DiagramViewerProps): JSX.Element {
+export default function DiagramViewer({title, mermaid, minWidth = 760}: DiagramViewerProps): JSX.Element {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const [isReady, setIsReady] = useState(false);
 
@@ -102,17 +101,6 @@ export default function DiagramViewer({title, mermaid, minWidth = 760, staticSrc
         <button className="button button--secondary button--sm" type="button" onClick={openFullSize}>
           Open Full Size
         </button>
-        {staticSrc ? (
-          <a
-            className="button button--secondary button--sm"
-            href={staticSrc}
-            download={`${title?.replace(/\s+/g, '-').toLowerCase() || 'diagram'}.svg`}
-            title="Download static SVG for offline viewing"
-            style={{ marginLeft: '0.5rem' }}
-          >
-            Download SVG
-          </a>
-        ) : null}
         <span className={styles.hint}>Use mouse wheel to zoom and drag to pan.</span>
       </div>
 

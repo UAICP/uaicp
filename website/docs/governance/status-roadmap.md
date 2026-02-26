@@ -2,14 +2,15 @@
 
 ## Current Release
 
-- protocol version: `v0.2`
+- protocol version: `v0.3`
 - practitioner status: ready to implement
 - documentation status: complete implementation guidance is published on this site
 
-## Included in v0.2
+## Included in v0.3
 
 - core specification and invariant model
 - schema contracts (envelope, evidence, verification report)
+- invariant evaluation engine (reference implementation)
 - adapter contract and framework adapter guidance
 - runnable finance workflow comparison in `reference-impl/`
 
@@ -23,6 +24,6 @@ For adoption, start with:
 
 ## Contributor Tracking
 
-Enhancements after `v0.2` are tracked in GitHub issues:
+Enhancements after `v0.3` are tracked in GitHub issues:
 
 - [UAICP Issues](https://github.com/UAICP/uaicp/issues)

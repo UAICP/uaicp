@@ -62,8 +62,10 @@ Execution style:
 
 - identity gate (`IdentityValidator`)
 - policy gate (`PolicyEvaluator`)
-- evidence gate (required evidence fields)
-- verification gate (confidence/verification constraints)
+- invariant gate (`InvariantEvaluator`)
+  - evidence gate (checks required evidence sources)
+  - verification gate (checks verification constraints)
+  - risk tier gate (enforces token presence for high-risk writes)
 
 Outcome behavior:
 

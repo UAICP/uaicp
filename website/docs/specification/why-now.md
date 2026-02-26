@@ -1,35 +1,70 @@
-# Protocol Context
+# Why UAICP Now
 
-Agentic workflows are increasingly executing real tasks with side effects.
+Agentic systems are moving from assistive chat to workflow execution with side effects.
 
-Without deterministic guardrails, common failures include:
+That shift creates a gap:
 
-- unverified claims
-- skipped tool calls
-- unauthorized writes
-- poor auditability
+- models are probabilistic
+- production workflows require deterministic control
 
-UAICP standardizes the reliability controls needed to make these workflows production-safe.
+UAICP addresses this by specifying reliability controls that are enforceable by runtime code.
 
-## First Principles
+## Core Problem
 
-- LLM output is probabilistic.
-- Workflow control must be deterministic.
-- Verification must be mechanical, not self-assessed.
+Prompting an LLM to "use tools when needed" is not a safety guarantee.
 
-UAICP operationalizes these principles through contracts and invariants.
+Failure modes:
 
-## Operational Context
+- skipped tool calls and stale assumptions
+- hallucinated claims without evidence
+- unverified writes to production systems
+- no replayable audit of how a decision was made
 
-UAICP is designed for production and regulated execution contexts where non-silent failure and auditability are mandatory. It is intended for deterministic, controlled workflows rather than exploratory autonomous demos.
+## UAICP Response
 
-## Why a Separate Layer
+UAICP standardizes the minimum contract required for trustworthy execution:
 
-Frameworks such as LangGraph, Microsoft Agent Framework runtimes, AutoGen, and CrewAI are strong orchestration systems. UAICP is the reliability governance layer that remains portable across all of them.
+- deterministic state transitions
+- evidence-gated delivery
+- machine-verifiable verification reports
+- policy gates for write actions
+- fail-safe behavior when verification is missing
 
-Without a shared contract layer, every team reinvents:
+## Outcome Model
 
-- evidence contracts
-- verifier report semantics
+UAICP optimizes for:
+
+- **correct** output when evidence and verification pass
+- **explicitly uncertain** output when they do not
+
+It does not optimize for autonomous behavior at any cost.
+
+## Market Reality
+
+There are two adoption contexts:
+
+- demo-centric automation where speed and novelty dominate
+- enterprise and regulated execution where deterministic control and auditability are mandatory
+
+UAICP is designed for the second context.
+
+## Why a Decoupled Layer Is Required
+
+Frameworks such as LangGraph, Microsoft Agent Framework, AutoGen, and CrewAI provide orchestration capabilities, but they are not a shared reliability protocol.
+
+Without a decoupled contract layer, each implementation must reinvent:
+
+- evidence contract shape
+- verification report semantics
 - policy gating behavior
 - conformance criteria
+
+UAICP keeps these reliability controls portable across frameworks and vendors.
+
+## Enterprise Value
+
+UAICP enforces a contract that matters for production risk:
+
+- no silent hallucination in delivered outputs
+- no deliver transition without evidence and verifier pass
+- no high-risk writes without policy and approval metadata

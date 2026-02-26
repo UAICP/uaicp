@@ -1,6 +1,6 @@
 {
   "name": "@uaicp/uaicp_specification",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "UAICP specification: reliability contract for agentic workflow integrity and control",
   "main": "index.js",
   "scripts": {

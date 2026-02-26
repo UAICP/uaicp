@@ -11,6 +11,7 @@ This roadmap is status-based and issue-driven. It does not use timeline/date com
   - agentic
   - agent without UAICP
   - agent with UAICP
+- invariant evaluation engine (`src/invariant`)
 
 ## In Progress
 

@@ -1,6 +1,7 @@
 import { IdentityValidator } from '../../identity/validator';
 import { PolicyEvaluator } from '../../policy/evaluator';
-import { AgentIdentity } from '../../types/core';
+import { AgentIdentity, EvidenceObject, VerificationReport } from '../../types/core';
+import { InvariantEvaluator, TaskDefinition, InvariantContext } from '../../invariant/evaluator';
 
 export type WorkflowMode =
   | 'manual'
@@ -134,26 +135,57 @@ export function runAgentWorkflowWithUaicp(input: FinanceWorkflowInput): Workflow
     };
   }
 
-  const missingEvidence: string[] = [];
-  if (!input.evidence.ticketLinked) missingEvidence.push('ticketLinked');
-  if (!input.evidence.ledgerSnapshot) missingEvidence.push('ledgerSnapshot');
-  if (!input.evidence.beneficiaryValidated) missingEvidence.push('beneficiaryValidated');
+  // 3. Map inputs to UAICP Evidence Objects
+  const evidences: EvidenceObject[] = [];
+  const now = new Date().toISOString();
 
-  if (missingEvidence.length > 0) {
-    return {
-      mode: 'agent_with_uaicp',
-      decision: 'rejected',
-      reasons: missingEvidence.map((field) => `EVIDENCE_MISSING:${field}`),
-      notes: ['UAICP evidence gate blocked delivery'],
-    };
+  if (input.evidence.ticketLinked) {
+    evidences.push({ evidence_id: 'ev-tick', evidence_type: 'tool_result', source: 'jira_plugin', hash: 'abc', collected_at: now });
+  }
+  if (input.evidence.ledgerSnapshot) {
+    evidences.push({ evidence_id: 'ev-ledg', evidence_type: 'tool_result', source: 'ledger_snapshot', hash: 'def', collected_at: now });
+  }
+  if (input.evidence.beneficiaryValidated) {
+    evidences.push({ evidence_id: 'ev-ben', evidence_type: 'tool_result', source: 'beneficiary_kyc', hash: 'xyz', collected_at: now });
   }
 
-  if (input.modelConfidence < 0.55) {
+  // 4. Map Confidence to a Verification Report
+  const reports: VerificationReport[] = [
+    {
+      report_id: 'rep-conf',
+      request_id: input.requestId,
+      verifier_id: 'model-confidence-checker',
+      status: input.modelConfidence >= 0.55 ? 'pass' : 'fail',
+      checks: [
+        { check_id: 'CONFIDENCE_THRESHOLD', result: input.modelConfidence >= 0.55 ? 'pass' : 'fail' }
+      ],
+      generated_at: now
+    }
+  ];
+
+  // 5. Evaluate Invariants for the State Transition
+  const taskDef: TaskDefinition = {
+    taskId: 'wire-reversal',
+    requiredEvidenceSources: ['jira_plugin', 'ledger_snapshot', 'beneficiary_kyc'],
+    requiredVerifierIds: ['model-confidence-checker'],
+    writeRiskTier: 'write_high_risk'
+  };
+
+  const context: InvariantContext = {
+    evidences,
+    reports,
+    policyApproved: policyResult.decision === 'allow',
+    approvalTokenPresent: !!input.approvalToken
+  };
+
+  const evalResult = InvariantEvaluator.evaluate(taskDef, context);
+
+  if (!evalResult.canDeliver) {
     return {
       mode: 'agent_with_uaicp',
       decision: 'rejected',
-      reasons: ['VERIFICATION_FAILED:LOW_MODEL_CONFIDENCE'],
-      notes: ['UAICP verification gate blocked low-confidence delivery'],
+      reasons: evalResult.reasons,
+      notes: ['UAICP invariant gate blocked delivery', `Transitioning to: ${evalResult.transitionsTo}`],
     };
   }
 

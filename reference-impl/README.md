@@ -20,6 +20,10 @@ Protocol source of truth:
 - `src/policy`
   - deterministic policy evaluator for `allow`, `deny`, `needs_review`
   - reason-coded decisions for runtime gating
+- `src/invariant`
+  - checks evidence requirements and verification passes
+  - checks trust tier limits on writes
+  - fail-safe transition bounds
 - `src/examples/finance/workflow-comparison.ts`
   - side-by-side finance workflow comparison:
     - `manual`
@@ -58,6 +62,7 @@ This repository uses status-based roadmap tracking, not timeline/date planning.
 - complete
   - identity and attestation validation
   - policy evaluator
+  - invariant evaluation engine
   - finance workflow comparison example
 - in progress
   - richer verification report assembly primitives

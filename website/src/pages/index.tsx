@@ -11,7 +11,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <div className={styles.statusBadge}>Protocol v0.2</div>
+        <div className={styles.statusBadge}>Protocol v0.3</div>
         <h1 className="hero__title">UAICP</h1>
         <p className={styles.heroName}>Universal Agent Integrity & Control Protocol</p>
         <p className={styles.heroDescription}>
@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
       <Head>
         <meta name="description" content={description} />
       </Head>
-      <Layout title="UAICP Protocol v0.2" description={description}>
+      <Layout title="UAICP Protocol v0.3" description={description}>
         <HomepageHeader />
         <main>
           <HomepageFeatures />

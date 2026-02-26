@@ -1,4 +1,4 @@
-# UAICP Specification (v0.2)
+# UAICP Specification (v0.3)
 
 UAICP stands for **Universal Agent Integrity & Control Protocol**.
 
@@ -6,7 +6,7 @@ UAICP is an open reliability contract for agentic workflow execution. It standar
 
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
 
-## v0.2 Release Scope
+## v0.3 Release Scope
 
 - baseline specification and invariant model
 - schema contracts for envelope, evidence, and verification report
@@ -42,7 +42,7 @@ Start in:
 
 ## Contributor Tracking
 
-Post-`v0.2` enhancements are tracked in:
+Post-`v0.3` enhancements are tracked in:
 
 - [Specification Issues](https://github.com/UAICP/uaicp/issues)
 - [Roadmap](PROJECT-ROADMAP.md)

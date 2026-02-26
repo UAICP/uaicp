@@ -1,4 +1,4 @@
-# UAICP Specification (v0.2)
+# UAICP Specification (v0.3)
 
 ## 1. Purpose
 
@@ -18,6 +18,16 @@ UAICP is framework-neutral. It standardizes control semantics that can be embedd
 - **Tool**: deterministic side-effecting or read-only function returning evidence objects.
 - **Verifier**: mechanical validator that emits structured verification results.
 
+## 3. Data Flow
+
+The required data flow defines how roles interact within the state machine:
+
+1. **Model** generates a plan or tool calls based on the prompt.
+2. **Orchestrator** captures the intent and invokes the requested **Tools**.
+3. **Tools** execute and yield **Evidence** objects.
+4. **Verifiers** consume the **Evidence** objects and evaluate them against required invariants, yielding **Verification Reports**.
+5. **Orchestrator** evaluates the **Verification Reports** to gate the `deliver` transition.
+
 ## 3. Execution States
 
 Required state machine phases:
@@ -29,41 +39,47 @@ Required state machine phases:
 5. `deliver`
 6. `fail_safe`
 
-### 3.1 Transition Rules
+### 4.1 Transition Rules
 
 - `deliver` is forbidden unless all required invariants evaluate true.
-- any invariant failure in `execute` or `verify` transitions to `fail_safe` unless retry policy allows bounded repair.
-- retries must be bounded and logged.
+- Any invariant failure in `execute` or `verify` must transition to `fail_safe`, **unless** a defined retry policy allows bounded repair.
+- **Bounded Repair Loop**: If an invariant fails, the Orchestrator may transition from `verify` back to `plan` or `execute` to attempt repair, provided the retry count is bounded and logged.
+- Valid final terminal states are only `deliver` or `fail_safe`.
 
-## 4. Required Invariants
+### 4.2 Concurrency and Streaming
 
-### 4.1 Evidence Gating
+- Execution phases may run concurrently (e.g., executing multiple tools in parallel), but the state transitions remain synchronous.
+- If an implementation supports UX streaming, partial `deliver` chunks may only be streamed if they are read-only and explicitly marked as unverified, or if the system implements partial verification streams. Final commitment to the `deliver` state must await full graph resolution.
 
-If task class requires evidence type `X`, no deliverable may be produced without valid evidence objects of `X`.
+## 5. Required Invariants
 
-### 4.2 Verification Gating
+### 5.1 Evidence Gating
 
-Required verifiers for task class must complete and report `pass` before `deliver`.
+If task class requires evidence type `X` produced by a Tool, no deliverable may be produced without valid evidence objects of `X`.
 
-### 4.3 Policy-Gated Writes
+### 5.2 Verification Gating
 
-Write operations must be categorized by risk tier.
+Required verifiers for task class must complete, evaluate the evidence, and report `pass` before `deliver`.
+
+### 5.3 Policy-Gated Writes
+
+Write operations must be categorized by a risk tier, which must be declared by the Tool definition and enforced by the Orchestrator.
 
 - `read_only`: auto-allowed
 - `write_low_risk`: allowed with policy checks
-- `write_high_risk`: requires approval token and rollback metadata
+- `write_high_risk`: requires a cryptographically verifiable approval token (or explicitly traced human/system authority in the audit log) and rollback metadata.
 
-### 4.4 Auditability
+### 5.4 Auditability
 
 Every state transition and tool invocation must include:
 
-- `request_id`
-- `trace_id`
-- timestamp
-- actor identity
-- outcome
+- `request_id` (UUID format recommended)
+- `trace_id` (W3C standard recommended)
+- `timestamp` (ISO 8601 / RFC 3339 formatted)
+- `actor identity` (Explicitly distinguishing between system identities, orchestration agents, and human users)
+- `outcome`
 
-## 5. Contracts
+## 6. Contracts
 
 Normative schema set:
 
@@ -73,7 +89,7 @@ Normative schema set:
 
 Implementations may extend schemas with namespaced fields but must not break required fields.
 
-## 6. Fail-Safe Behavior
+## 7. Fail-Safe Behavior
 
 When invariants are unmet, systems must:
 
@@ -81,7 +97,7 @@ When invariants are unmet, systems must:
 - include missing-evidence reason codes
 - avoid unverified side effects
 
-## 7. Conformance
+## 8. Conformance
 
 A system is UAICP-conformant at baseline if it:
 
@@ -90,13 +106,13 @@ A system is UAICP-conformant at baseline if it:
 - emits valid contract objects
 - passes baseline checks in `tests/COMPLIANCE-TESTS.md`
 
-## 8. Versioning
+## 9. Versioning
 
 - major: breaking contract changes
 - minor: backward-compatible contract extensions
 - patch: clarifications and errata
 
-## 9. Relationship to Framework Runtimes
+## 10. Relationship to Framework Runtimes
 
 UAICP is a decoupled governance layer, not an orchestration framework.
 
