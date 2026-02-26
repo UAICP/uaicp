@@ -10,11 +10,12 @@ For visual component architecture and per-framework flow diagrams, see:
 
 Every framework adapter must provide these control points:
 
-- envelope mapping
+- envelope mapping (including `parent_trace_id` for nested swarms)
 - evidence normalization
 - verifier invocation
-- policy-gated write checks
+- policy-gated write checks (enforcing `rollback_action` structures)
 - audit event emission
+- UX streaming boundary enforcement (`streamPartial`)
 
 ## LangGraph-Style Mapping
 

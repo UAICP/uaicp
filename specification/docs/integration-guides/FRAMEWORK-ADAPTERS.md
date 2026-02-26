@@ -1,28 +1,54 @@
 # Framework Adapters
 
-UAICP uses one reliability pattern across multiple frameworks.
+UAICP uses one reliability contract pattern across multiple frameworks.
 
-## Shared Responsibilities
+For visual component architecture and per-framework flow diagrams, see:
 
-Every adapter must provide:
+- [Architecture Diagrams](./architecture-diagrams)
 
-- envelope mapping
+## Common Adapter Responsibilities
+
+Every framework adapter must provide these control points:
+
+- envelope mapping (including `parent_trace_id` for nested swarms)
 - evidence normalization
 - verifier invocation
-- policy-gated write checks
+- policy-gated write checks (enforcing `rollback_action` structures)
 - audit event emission
+- UX streaming boundary enforcement (`streamPartial`)
 
-## Framework Mapping Notes
+## LangGraph-Style Mapping
 
-- **LangGraph & Vercel AI SDK (Streaming Run-loops):** Map token streaming boundaries to `streamPartial` and wrap `is_final` triggers with the main verify/policy node before terminal delivery.
-- **OpenAI Swarm & AutoGen (Multi-Agent Hierarchies):** Explicitly map the orchestrator's recursive calls into the `parent_trace_id` of the UaicpEnvelope. Wrap swarm handoff events and final task completion with verifier and policy gates.
-- **CrewAI or Tool-Calling Agents:** Gate task completion and high-risk side effects with UAICP decisions. Enforce `rollback_action` structures on all high-risk writes.
-- **Anthropic Computer Use:** Treat screenshot diff outputs or stdout logs as opaque Evidence payloads (with semantic hashes) to be graded by the Verification Gate.
+A LangGraph-style workflow typically maps as:
 
-## Validation Expectation
+- graph state -> UAICP envelope
+- node outputs -> evidence objects
+- verification node -> verifier + policy gates
+- terminal node -> `deliver` only when gates pass
+- streaming boundaries -> map UI partial chunks to the `streamPartial` adapter hook
 
-Adapter behavior is valid when equivalent inputs produce equivalent gate outcomes (`allow`, `deny`, `needs_review`) as defined by UAICP contracts.
+See: [LangGraph Adapter Example](./langgraph-adapter-example.md).
 
-Reference fixture:
+## AutoGen / CrewAI / OpenAI Agents SDK Mapping
+
+The same contract applies even when orchestration APIs differ:
+
+- wrap tool execution events as evidence
+- run explicit verify gate before final response
+- enforce policy gate before any high-risk write, demanding `rollback_action` structures
+- map hierarchy handoff events to nested envelopes using `parent_trace_id`
+- return `fail_safe` with reason codes when gates fail
+
+See examples:
+
+- [AutoGen Adapter Example](./autogen-adapter-example.md)
+- [CrewAI Adapter Example](./crewai-adapter-example.md)
+- [OpenAI Agents SDK Adapter Example](./openai-agents-sdk-adapter-example.md)
+
+## Practical Validation
+
+An adapter is valid when it produces the same gate outcomes as the reference behavior for equivalent inputs.
+
+Use this finance workflow comparison as a baseline fixture:
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
