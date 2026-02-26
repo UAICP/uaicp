@@ -1,4 +1,4 @@
-# UAICP Specification
+# UAICP Specification (v0.2)
 
 UAICP stands for **Universal Agent Integrity & Control Protocol**.
 
@@ -6,26 +6,20 @@ UAICP is an open reliability contract for agentic workflow execution. It standar
 
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
 
-## What Is Complete
+## v0.2 Release Scope
 
 - baseline specification and invariant model
 - schema contracts for envelope, evidence, and verification report
-- compliance test categories
+- executable baseline conformance harness (`npm test`)
 - adapter contract and framework integration guidance
 - reference implementation primitives and finance workflow comparison
 
-## What Is Tracked as Ongoing
+## Practitioner Start Path
 
-Enhancements are tracked in roadmap/issues, not hidden in incomplete docs.
-
-- roadmap tracker: https://github.com/UAICP/uaicp_specification/issues/16
-- roadmap document: [PROJECT-ROADMAP.md](PROJECT-ROADMAP.md)
-- implementation workstream map: [docs/specification/implementation-plan.md](docs/specification/implementation-plan.md)
-
-Roadmap policy:
-
-- status-based tracking (`complete`, `in_progress`, `planned`)
-- no timeline/date commitments
+1. Read the [core specification](docs/specification/specification.md)
+2. Implement the [adapter contract](docs/integration-guides/ADAPTER-CONTRACT.md)
+3. Validate with [compliance tests](tests/COMPLIANCE-TESTS.md) and `npm test`
+4. Compare behavior with the [finance workflow reference fixture](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
 
 ## Why UAICP Is a Separate Layer
 
@@ -45,6 +39,14 @@ Start in:
 
 - [docs/integration-guides/ADAPTER-CONTRACT.md](docs/integration-guides/ADAPTER-CONTRACT.md)
 - [docs/integration-guides/LANGGRAPH-ADAPTER-EXAMPLE.md](docs/integration-guides/LANGGRAPH-ADAPTER-EXAMPLE.md)
+
+## Contributor Tracking
+
+Post-`v0.2` enhancements are tracked in:
+
+- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
+- [Roadmap](PROJECT-ROADMAP.md)
+- [Implementation Workstream Map](docs/specification/implementation-plan.md)
 
 ## Repository Layout
 

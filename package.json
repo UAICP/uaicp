@@ -1,13 +1,14 @@
 {
   "name": "@uaicp/uaicp_specification",
-  "version": "0.1.0-draft.1",
+  "version": "0.2.0",
   "description": "UAICP specification: reliability contract for agentic workflow integrity and control",
   "main": "index.js",
   "scripts": {
     "setup": "npm install",
-    "test": "echo \"No executable tests in this repository yet\"",
-    "lint": "echo \"Linting not configured yet\"",
-    "build": "echo \"Build not configured for docs-only repository\""
+    "test": "node tests/run-conformance.cjs",
+    "conformance": "node tests/run-conformance.cjs",
+    "lint": "node tests/run-conformance.cjs",
+    "build": "node tests/run-conformance.cjs"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/UAICP/uaicp_specification/issues"
   },
-  "homepage": "https://uaicp.org"
+  "homepage": "https://uaicp.org",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^2.1.1"
+  }
 }

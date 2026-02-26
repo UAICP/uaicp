@@ -14,6 +14,9 @@ async function finalizeCrewTask(taskCtx: CrewTaskContext) {
 
   const gate = runPolicyGate({
     envelope,
+    verification,
+    action: taskCtx.action,
+    resource: taskCtx.resource,
     writeRisk: taskCtx.writeRisk,
     approvalToken: taskCtx.approvalToken,
   });
@@ -28,4 +31,4 @@ async function finalizeCrewTask(taskCtx: CrewTaskContext) {
 
 Reference fixture:
 
-- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)

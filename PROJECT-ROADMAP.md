@@ -1,6 +1,6 @@
 # UAICP Roadmap
 
-This roadmap is status-based and issue-driven. It does not use timeline/date commitments.
+This roadmap tracks post-`v0.2` enhancements. It is issue-driven and does not use timeline/date commitments.
 
 ## Complete
 
@@ -10,13 +10,13 @@ This roadmap is status-based and issue-driven. It does not use timeline/date com
 - initial adapter guidance
 - initial reference implementation primitives
 
-## In Progress
+## Post-v0.2 Active Work
 
-- normative wording hardening for `v0.1`
+- normative wording hardening for `v0.2`
 - machine-readable conformance harness contract
 - adapter conformance walkthrough artifacts
 
-## Planned
+## Post-v0.2 Backlog
 
 - external conformance report examples
 - reliability maturity profile proposal (`L1/L2/L3`)
@@ -26,7 +26,7 @@ This roadmap is status-based and issue-driven. It does not use timeline/date com
 
 Roadmap execution is tracked in GitHub issues:
 
-- roadmap tracker: https://github.com/UAICP/uaicp_specification/issues/16
+- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
 
 Recommended labels:
 

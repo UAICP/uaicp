@@ -109,6 +109,7 @@ _site/
 test-results/
 coverage/
 .nyc_output/
+tests/conformance-report.json
 
 # Temporary files
 *.tmp

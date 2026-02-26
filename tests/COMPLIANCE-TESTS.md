@@ -1,35 +1,45 @@
 # UAICP Compliance Tests (Baseline)
 
+Baseline compliance is executable in this repository via:
+
+```bash
+npm test
+```
+
+This runs `tests/run-conformance.cjs` and generates:
+
+- `tests/conformance-report.json`
+
 ## Test Categories
 
 1. **State Machine Compliance**
-   - all required states implemented
-   - invalid transitions rejected
+- required state enum contains all UAICP phases
+- `state` is required in message envelope schema
+- valid/invalid message envelope fixtures validate as expected
 
 2. **Evidence Gating Compliance**
-   - deliver blocked when required evidence missing
-   - evidence object matches schema
+- valid/invalid evidence object fixtures validate as expected
+- evidence enum includes `tool_result`
 
 3. **Verification Compliance**
-   - verifier output matches schema
-   - deliver blocked on verifier failure
+- valid/invalid verification report fixtures validate as expected
 
 4. **Policy Gate Compliance**
-   - write actions categorized by risk tier
-   - high-risk write blocked without approval token
+- adapter contract includes policy gate input/output requirements
+- high-risk write rule requires `APPROVAL_REQUIRED` + `needs_review`
 
 5. **Audit Compliance**
-   - transitions emit request_id, trace_id, timestamp, outcome
+- envelope schema requires `request_id`, `trace_id`, `timestamp`, `identity`
 
 ## Pass Criteria
 
-Baseline conformance requires 100% pass rate in all categories.
+Baseline conformance requires 100% pass rate across all executable checks.
 
 ## Reporting
 
-Implementations should output:
+`tests/conformance-report.json` includes:
 
-- test run id
+- generation timestamp
 - protocol version
-- pass/fail per category
-- failing invariant ids (if any)
+- total checks / failed checks
+- pass/fail per check with details on failures

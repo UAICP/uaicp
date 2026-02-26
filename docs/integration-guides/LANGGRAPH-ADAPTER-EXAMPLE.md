@@ -19,19 +19,20 @@ type GraphState = {
 ```ts
 function mapEnvelope(state: GraphState): UaicpEnvelope {
   return {
-    uaicp_version: '0.1',
+    uaicp_version: '0.2',
     request_id: state.requestId,
     trace_id: state.traceId,
-    message_type: state.intent,
+    state: 'execute',
     timestamp: new Date().toISOString(),
     identity: getRuntimeIdentity(),
+    metadata: { intent: state.intent },
   };
 }
 
 function collectEvidence(state: GraphState): EvidenceObject[] {
   return state.toolResults.map((r, i) => ({
     evidence_id: `${state.requestId}-${i}`,
-    evidence_type: 'tool_output',
+    evidence_type: 'tool_result',
     content_hash: hashResult(r.output),
     source: r.tool,
   }));
@@ -46,8 +47,13 @@ function verifyAndGate(state: GraphState): 'deliver' | 'fail_safe' | 'needs_revi
 
   const policy = runPolicyGate({
     envelope,
+    verification,
+    action: 'reverse_wire_transfer',
+    resource: state.traceId,
     writeRisk: 'write_high_risk',
     approvalToken: state.approvalToken,
+    allowedControlClasses: ['human-supervised', 'human-directed'],
+    trustTierAllowlist: ['high'],
   });
 
   return policy.decision === 'allow' ? 'deliver' : policy.decision;

@@ -14,6 +14,9 @@ async function runAutogenTaskWithUaicp(task: TaskInput) {
 
   const policy = runPolicyGate({
     envelope,
+    verification,
+    action: 'reverse_wire_transfer',
+    resource: task.destinationAccount,
     writeRisk: classifyWriteRisk(task),
     approvalToken: task.approvalToken,
   });
@@ -28,4 +31,4 @@ async function runAutogenTaskWithUaicp(task: TaskInput) {
 
 Reference fixture:
 
-- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)

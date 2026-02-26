@@ -14,8 +14,12 @@ interface UaicpAdapter {
   runPolicyGate(params: {
     envelope: UaicpEnvelope;
     verification: VerificationReport;
+    action: string;
+    resource: string;
     writeRisk: 'read_only' | 'write_low_risk' | 'write_high_risk';
     approvalToken?: string;
+    allowedControlClasses?: ('autonomous' | 'human-supervised' | 'human-directed')[];
+    trustTierAllowlist?: string[];
   }): { decision: GateDecision; reasons: string[] };
   emitAuditEvent(event: UaicpAuditEvent): void;
 }
@@ -46,6 +50,8 @@ For high-risk write actions, when approval metadata is absent:
 - include reason `APPROVAL_REQUIRED`
 - block side effects
 
+If `verification.status` is not `pass`, adapter policy gating must not return `allow`.
+
 ## Reference Implementation
 
-- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)

@@ -57,4 +57,4 @@ In progress:
 
 ## Tracking
 
-- roadmap tracker: https://github.com/UAICP/uaicp_specification/issues/16
+- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)

@@ -1,4 +1,4 @@
-# UAICP Specification (v0.1 Draft)
+# UAICP Specification (v0.2)
 
 ## 1. Purpose
 

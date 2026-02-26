@@ -14,6 +14,9 @@ async function runWithUaicp(input: AgentInput) {
 
   const policy = runPolicyGate({
     envelope,
+    verification,
+    action: input.action,
+    resource: input.resource,
     writeRisk: classifyWriteRisk(input),
     approvalToken: input.approvalToken,
   });
@@ -28,4 +31,4 @@ async function runWithUaicp(input: AgentInput) {
 
 Reference fixture:
 
-- `https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts`
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)

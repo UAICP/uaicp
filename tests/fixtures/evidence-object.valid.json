@@ -1,0 +1,10 @@
+{
+  "evidence_id": "ev-1001",
+  "evidence_type": "tool_result",
+  "source": "ledger-service",
+  "hash": "sha256:abc123",
+  "collected_at": "2026-01-01T00:00:00.000Z",
+  "payload": {
+    "ticketLinked": true
+  }
+}
