@@ -1,9 +1,5 @@
 # CrewAI Adapter Example
 
-This example adds UAICP controls to CrewAI task lifecycle completion.
-
-## Integration Skeleton
-
 ```ts
 async function finalizeCrewTask(taskCtx: CrewTaskContext) {
   const crewResult = await runCrew(taskCtx);
@@ -18,15 +14,14 @@ async function finalizeCrewTask(taskCtx: CrewTaskContext) {
 
   const gate = runPolicyGate({
     envelope,
+    verification,
+    action: taskCtx.action,
+    resource: taskCtx.resource,
     writeRisk: taskCtx.writeRisk,
     approvalToken: taskCtx.approvalToken,
   });
 
-  if (gate.decision === 'needs_review') {
-    return reviewRequired(gate.reasons);
-  }
-
-  if (gate.decision === 'deny') {
+  if (gate.decision !== 'allow') {
     return failSafe('POLICY_BLOCKED', gate.reasons);
   }
 
@@ -34,12 +29,6 @@ async function finalizeCrewTask(taskCtx: CrewTaskContext) {
 }
 ```
 
-## Required CrewAI Mapping
-
-- crew step artifacts -> evidence objects
-- task completion -> verify gate entry
-- side-effect tasks -> policy gate enforcement
-
-## Reference Fixture
+Reference fixture:
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

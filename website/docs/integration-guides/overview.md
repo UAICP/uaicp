@@ -27,6 +27,12 @@ framework request/context
   -> deliver OR fail_safe
 ```
 
+## Visual Architecture References
+
+For component and framework-level diagrams, see:
+
+- [Architecture Diagrams](./architecture-diagrams.md)
+
 ## Reference Implementation Link
 
 Use the concrete finance comparison implementation:

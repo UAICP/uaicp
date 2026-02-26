@@ -1,6 +1,6 @@
 # Adapter Contract
 
-Adapters are the boundary between framework-native runtime state and UAICP reliability contracts.
+Adapters connect framework-native runtime behavior to UAICP reliability controls.
 
 ## Required Adapter Interface
 
@@ -14,8 +14,12 @@ interface UaicpAdapter {
   runPolicyGate(params: {
     envelope: UaicpEnvelope;
     verification: VerificationReport;
+    action: string;
+    resource: string;
     writeRisk: 'read_only' | 'write_low_risk' | 'write_high_risk';
     approvalToken?: string;
+    allowedControlClasses?: ('autonomous' | 'human-supervised' | 'human-directed')[];
+    trustTierAllowlist?: string[];
   }): { decision: GateDecision; reasons: string[] };
   emitAuditEvent(event: UaicpAuditEvent): void;
 }
@@ -27,7 +31,7 @@ interface UaicpAdapter {
 mapEnvelope -> collectEvidence -> runVerifier -> runPolicyGate -> deliver/fail_safe
 ```
 
-Do not deliver before all required gates complete.
+No delivery should occur before required gates complete.
 
 ## Minimum Outcome Codes
 
@@ -40,22 +44,14 @@ Do not deliver before all required gates complete.
 
 ## Required High-Risk Write Rule
 
-For high-risk write actions, if approval metadata is missing:
+For high-risk write actions, when approval metadata is absent:
 
 - return `needs_review`
-- include `APPROVAL_REQUIRED`
-- block side-effect execution
+- include reason `APPROVAL_REQUIRED`
+- block side effects
 
-## Validation Checklist
+If `verification.status` is not `pass`, adapter policy gating must not return `allow`.
 
-- envelope fields map deterministically from runtime context
-- required evidence objects are present before delivery
-- verification failures route to `fail_safe`
-- policy gate denies unsafe write actions
-- outcomes include machine-readable reason codes
-
-## Concrete Example
-
-Reference implementation finance scenario:
+## Reference Implementation
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

@@ -2,6 +2,10 @@
 
 UAICP uses one reliability contract pattern across multiple frameworks.
 
+For visual component architecture and per-framework flow diagrams, see:
+
+- [Architecture Diagrams](./architecture-diagrams.md)
+
 ## Common Adapter Responsibilities
 
 Every framework adapter must provide these control points:

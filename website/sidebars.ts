@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
       label: 'Integration Guides',
       items: [
         'integration-guides/overview',
+        'integration-guides/architecture-diagrams',
         'integration-guides/framework-adapters',
         'integration-guides/adapter-contract',
         'integration-guides/adapter-matrix',

@@ -1,9 +1,5 @@
 # OpenAI Agents SDK Adapter Example
 
-Use UAICP as an explicit reliability wrapper around agent run lifecycle events.
-
-## Integration Skeleton
-
 ```ts
 async function runWithUaicp(input: AgentInput) {
   const run = await agent.run(input);
@@ -18,6 +14,9 @@ async function runWithUaicp(input: AgentInput) {
 
   const policy = runPolicyGate({
     envelope,
+    verification,
+    action: input.action,
+    resource: input.resource,
     writeRisk: classifyWriteRisk(input),
     approvalToken: input.approvalToken,
   });
@@ -30,12 +29,6 @@ async function runWithUaicp(input: AgentInput) {
 }
 ```
 
-## Required Event Handling
-
-- tool execution events must be persisted as evidence objects
-- verifier must execute before final output publication
-- policy gate must run before high-risk write actions
-
-## Reference Fixture
+Reference fixture:
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

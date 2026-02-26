@@ -1,9 +1,5 @@
 # AutoGen Adapter Example
 
-This example wraps AutoGen task completion with UAICP verify/policy gates.
-
-## Integration Skeleton
-
 ```ts
 async function runAutogenTaskWithUaicp(task: TaskInput) {
   const runtime = await autogen.run(task);
@@ -18,6 +14,9 @@ async function runAutogenTaskWithUaicp(task: TaskInput) {
 
   const policy = runPolicyGate({
     envelope,
+    verification,
+    action: 'reverse_wire_transfer',
+    resource: task.destinationAccount,
     writeRisk: classifyWriteRisk(task),
     approvalToken: task.approvalToken,
   });
@@ -30,13 +29,6 @@ async function runAutogenTaskWithUaicp(task: TaskInput) {
 }
 ```
 
-## Required Checks
-
-- tool outputs are normalized into evidence objects
-- verification runs before final answer delivery
-- high-risk writes require approval metadata
-- blocked paths return reason-coded fail-safe output
-
-## Reference Fixture
+Reference fixture:
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
