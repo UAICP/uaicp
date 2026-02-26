@@ -12,3 +12,4 @@ This repository contains:
 - Canonical technical docs live in `specification/docs/`.
 - Website docs in `website/docs/{specification,integration-guides,examples}` are synced mirrors.
 - Sync command: `cd website && npm run sync:docs`.
+- Release runbook: `RELEASING.md`.
