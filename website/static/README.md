@@ -33,7 +33,7 @@ static/
 Reference static assets using absolute paths:
 
 ```markdown
-![UAICP Architecture](/img/architecture-diagram.svg)
+![UAICP Logo](/img/logo-cropped.svg)
 ```
 
 Or in React components:
