@@ -31,7 +31,7 @@ framework request/context
 
 For component and framework-level diagrams, see:
 
-- [Architecture Diagrams](./architecture-diagrams.md)
+- [Architecture Diagrams](./architecture-diagrams)
 
 ## Reference Implementation Link
 
