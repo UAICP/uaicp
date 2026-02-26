@@ -11,5 +11,8 @@
         "build": "npm run build -ws",
         "test": "npm run test -ws",
         "lint": "npm run lint -ws"
+    },
+    "devDependencies": {
+        "vitest": "^4.0.18"
     }
 }
