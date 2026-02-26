@@ -2,7 +2,7 @@
 
 UAICP v0.3 Reliability Protocol Adapter for Microsoft AutoGen
 
-Version: 0.3.0
+Version: 0.3.1
 
 ## Install
 

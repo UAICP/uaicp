@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "uaicp-adapter-autogen"
-version = "0.3.0"
+version = "0.3.1"
 description = "UAICP Reliability Protocol Adapter for Microsoft AutoGen"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "uaicp-core>=0.3.0",
+    "uaicp-core>=0.3.1",
     "autogen-agentchat>=0.4",
 ]
 

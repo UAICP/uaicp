@@ -2,7 +2,7 @@
 
 Core UAICP types and interfaces for TypeScript.
 
-Version: `0.3.0`
+Version: `0.3.1`
 
 ## Install
 

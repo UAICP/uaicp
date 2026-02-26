@@ -1,6 +1,6 @@
 {
     "name": "@uaicp/adapter-langgraph",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "UAICP Reliability Protocol Adapter for LangGraph",
     "license": "Apache-2.0",
     "repository": {
@@ -32,7 +32,7 @@
         "test": "vitest run"
     },
     "dependencies": {
-        "@uaicp/core": "^0.3.0",
+        "@uaicp/core": "^0.3.1",
         "@langchain/core": "^0.2.0",
         "@langchain/langgraph": "^0.0.28"
     },

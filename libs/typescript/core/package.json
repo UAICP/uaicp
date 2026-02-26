@@ -1,6 +1,6 @@
 {
     "name": "@uaicp/core",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Core UAICP Types and Interfaces",
     "license": "Apache-2.0",
     "repository": {

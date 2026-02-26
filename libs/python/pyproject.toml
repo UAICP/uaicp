@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "uaicp-python-workspace"
-version = "0.3.0"
+version = "0.3.1"
 description = "UAICP Python Ecosystem Workspace"
 readme = "README.md"
 requires-python = ">=3.10"
