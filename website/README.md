@@ -11,16 +11,22 @@ This site is the complete reference for:
 
 - protocol overview and integration model
 - adapter contract and framework-specific adapter guidance
-- concrete finance workflow comparison walkthrough
+- polyglot adapter ecosystem (TypeScript, Python, Rust)
 - governance and contribution entry points
 
-Canonical protocol source:
+## Canonical Sources
+
+### Specification
 
 - [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
-Reference implementation source:
+### Adapter Implementations
 
-- [reference-impl/](https://github.com/UAICP/uaicp/tree/main/reference-impl)
+| Language | Location | Tests |
+|----------|----------|-------|
+| TypeScript | [libs/typescript/](https://github.com/UAICP/uaicp/tree/main/libs/typescript) | 12 |
+| Python | [libs/python/](https://github.com/UAICP/uaicp/tree/main/libs/python) | 23 |
+| Rust | [libs/rust/](https://github.com/UAICP/uaicp/tree/main/libs/rust) | 17 |
 
 ## Contributor Tracking
 

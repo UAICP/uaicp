@@ -4,6 +4,16 @@ UAICP integrates as a reliability control layer under your existing orchestratio
 
 This website provides complete integration guidance for `v0.3` implementation.
 
+## Polyglot Support
+
+UAICP provides official adapters in three languages:
+
+| Language | Framework | Package | Tests |
+|----------|-----------|---------|-------|
+| TypeScript | LangGraph | `@uaicp/adapter-langgraph` | 12 |
+| Python | Microsoft AutoGen v0.4 | `uaicp-adapter-autogen` | 23 |
+| Rust | Rig | `uaicp-adapter-rig` | 17 |
+
 ## Integration Target
 
 You keep your existing framework for orchestration and tool execution.
@@ -25,8 +35,8 @@ framework request/context
   -> map to UAICP envelope (include parent_trace_id if swarm)
   -> flush UX partial streams safely (if applicable)
   -> execute tools and collect evidence objects
-  -> run verifier checks
-  -> run policy gate (must include rollback_action for writes)
+  -> run verifier checks (verifyGates)
+  -> run policy gate (enforcePolicy - must include rollback_action for writes)
   -> deliver OR fail_safe (execute rollback)
 ```
 
@@ -36,19 +46,31 @@ For component and framework-level diagrams, see:
 
 - [Architecture Diagrams](./architecture-diagrams)
 
-## Reference Implementation Link
+## Quick Start
 
-Use the concrete finance comparison implementation:
+Choose your language:
 
-- source: [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
-- runner: [run-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/run-comparison.ts)
-
-Run locally:
+### TypeScript
 
 ```bash
-cd reference-impl/
+cd libs/typescript
 npm install
-npm run example:finance
+npm test
+```
+
+### Python
+
+```bash
+cd libs/python
+pip install -e core/ -e adapter-autogen/
+pytest adapter-autogen/tests/
+```
+
+### Rust
+
+```bash
+cd libs/rust
+cargo test --workspace
 ```
 
 ## Definition of Complete Adapter Integration
@@ -61,6 +83,12 @@ An adapter is complete when it can:
 - block delivery on failed verification or missing evidence.
 - enforce policy gate semantics on high-risk writes by enforcing `rollback_action`.
 - emit reason-coded outcomes (`allow`, `deny`, `needs_review`).
+
+## Implementation Locations
+
+- [libs/typescript/](https://github.com/UAICP/uaicp/tree/main/libs/typescript)
+- [libs/python/](https://github.com/UAICP/uaicp/tree/main/libs/python)
+- [libs/rust/](https://github.com/UAICP/uaicp/tree/main/libs/rust)
 
 ## Contributor Links
 

@@ -10,9 +10,17 @@
 
 - core specification and invariant model
 - schema contracts (envelope, evidence, verification report)
-- invariant evaluation engine (reference implementation)
-- adapter contract and framework adapter guidance
-- runnable finance workflow comparison in `reference-impl/`
+- polyglot adapter ecosystem (TypeScript, Python, Rust)
+- **52 passing tests** across all official adapters
+- adapter contract with language-specific implementations
+
+## Official Adapters
+
+| Language | Framework | Package | Tests |
+|----------|-----------|---------|-------|
+| TypeScript | LangGraph | `@uaicp/adapter-langgraph` | 12 |
+| Python | Microsoft AutoGen v0.4 | `uaicp-adapter-autogen` | 23 |
+| Rust | Rig | `uaicp-adapter-rig` | 17 |
 
 ## Implementation Path
 
@@ -20,7 +28,22 @@ For adoption, start with:
 
 - [Core Specification](../specification/specification.md)
 - [Adapter Contract](../integration-guides/adapter-contract.md)
-- [Finance Workflow Comparison](../examples/finance-workflow-comparison.md)
+- [Adapter Matrix](../integration-guides/adapter-matrix.md)
+
+## Quick Start
+
+```bash
+# Choose your language
+
+# TypeScript
+cd libs/typescript && npm install && npm test
+
+# Python
+cd libs/python && pip install -e core/ -e adapter-autogen/ && pytest adapter-autogen/tests/
+
+# Rust
+cd libs/rust && cargo test --workspace
+```
 
 ## Contributor Tracking
 
