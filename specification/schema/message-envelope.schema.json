@@ -24,6 +24,11 @@
       "type": "string",
       "minLength": 1
     },
+    "parent_trace_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional trace ID of the parent orchestrator or agent for nested swarms"
+    },
     "state": {
       "type": "string",
       "enum": [
@@ -78,6 +83,41 @@
         "uncertain",
         "pending"
       ]
+    },
+    "streaming": {
+      "type": "object",
+      "properties": {
+        "chunk_id": {
+          "type": "string"
+        },
+        "is_final": {
+          "type": "boolean"
+        },
+        "stream_index": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Metadata for partial UX streaming execution"
+    },
+    "rollback_action": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "payload": {
+          "type": [
+            "object",
+            "string"
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "description": "Structured rollback metadata for high-risk write operations"
     },
     "metadata": {
       "type": "object",

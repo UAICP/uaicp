@@ -50,6 +50,12 @@ Required state machine phases:
 
 - Execution phases may run concurrently (e.g., executing multiple tools in parallel), but the state transitions remain synchronous.
 - If an implementation supports UX streaming, partial `deliver` chunks may only be streamed if they are read-only and explicitly marked as unverified, or if the system implements partial verification streams. Final commitment to the `deliver` state must await full graph resolution.
+- **Streaming Envelope Primitives**: Implementing streaming adapters should leverage the `streaming` metadata block in the Envelope (with `chunk_id`, `is_final`, and `stream_index`) to ensure partial chunks are deterministic and correctly ordered.
+
+### 4.3 Multi-Agent Swarms and Hierarchical Orchestration
+
+- For complex graphs with nested agents (e.g., AutoGen, CrewAI), the system must maintain hierarchical bounds.
+- Use `parent_trace_id` in the Envelope and Evidence definitions to explicitly define parent-child orchestration paths, ensuring invariant failures correctly bubble up to the invoking coordinator.
 
 ## 5. Required Invariants
 
@@ -67,7 +73,7 @@ Write operations must be categorized by a risk tier, which must be declared by t
 
 - `read_only`: auto-allowed
 - `write_low_risk`: allowed with policy checks
-- `write_high_risk`: requires a cryptographically verifiable approval token (or explicitly traced human/system authority in the audit log) and rollback metadata.
+- `write_high_risk`: requires a cryptographically verifiable approval token (or explicitly traced human/system authority in the audit log) and rollback metadata. Rollback metadata must be captured using the `rollback_action` primitive in the envelope, defining the `type`, `target`, and `payload` to invert the operation if subsequent steps fail.
 
 ### 5.4 Auditability
 

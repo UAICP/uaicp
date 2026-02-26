@@ -11,20 +11,61 @@
     "hash"
   ],
   "properties": {
-    "evidence_id": { "type": "string", "minLength": 1 },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
     "evidence_type": {
       "type": "string",
-      "enum": ["tool_result", "source_citation", "test_report", "approval_token", "custom"]
+      "enum": [
+        "tool_result",
+        "source_citation",
+        "test_report",
+        "approval_token",
+        "custom"
+      ]
     },
-    "source": { "type": "string", "minLength": 1 },
-    "request_id": { "type": "string", "format": "uuid", "description": "Optional linkage to the request" },
-    "trace_id": { "type": "string", "minLength": 1, "description": "Optional trace ID for the broader workflow" },
-    "actor": { "type": "string", "description": "Identity of the tool, agent, or entity that generated this evidence" },
-    "hash": { "type": "string", "description": "Cryptographic hash of the payload for verification" },
-    "collected_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional linkage to the request"
+    },
+    "trace_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional trace ID for the broader workflow"
+    },
+    "parent_trace_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional trace ID of the parent orchestrator for nested swarms"
+    },
+    "actor": {
+      "type": "string",
+      "description": "Identity of the tool, agent, or entity that generated this evidence"
+    },
+    "hash": {
+      "type": "string",
+      "description": "Cryptographic hash of the payload for verification"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "payload": {
       "description": "Opaque payload serialized by implementation",
-      "type": ["object", "array", "string", "number", "boolean", "null"]
+      "type": [
+        "object",
+        "array",
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
     }
   },
   "additionalProperties": true
