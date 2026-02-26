@@ -1,0 +1,38 @@
+{
+  "name": "@uaicp/uaicp-reference-impl",
+  "version": "0.2.0",
+  "description": "UAICP reliability primitives: identity validation and policy evaluation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "setup": "npm install",
+    "build": "tsc",
+    "test": "jest",
+    "lint": "echo \"Linting not configured yet\"",
+    "example:finance": "npm run build && node dist/examples/finance/run-comparison.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UAICP/uaicp-reference-impl.git"
+  },
+  "keywords": [
+    "uaicp",
+    "agent",
+    "reliability",
+    "policy",
+    "verification",
+    "orchestration"
+  ],
+  "author": "Prismworks AI",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  }
+}

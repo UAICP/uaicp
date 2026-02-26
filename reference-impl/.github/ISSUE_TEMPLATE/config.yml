@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: UAICP Specification Discussions
+    url: https://github.com/UAICP/uaicp_specification/discussions
+    about: Use Discussions for protocol-level design topics.
