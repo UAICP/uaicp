@@ -1,0 +1,136 @@
+import DiagramViewer from '@site/src/components/DiagramViewer';
+
+# Architecture Diagrams
+
+This page provides visual references for UAICP protocol architecture, terminology mapping, and framework-specific integration patterns.
+
+<DiagramViewer
+  title="1. Generic UAICP Architecture"
+  minWidth={980}
+  mermaid={`flowchart LR
+    U[User Request] --> F[Framework Runtime\nOrchestrator + Tool Router]
+
+    subgraph UAICP[UAICP Reliability Layer]
+      E[Envelope Mapping]
+      EV[Evidence Normalization]
+      V[Verification Gate]
+      P[Policy Gate]
+      A[Audit Event Emission]
+    end
+
+    F --> E --> EV --> V --> P
+    E --> A
+    EV --> A
+    V --> A
+    P --> A
+
+    P -->|allow| D[Deliver]
+    P -->|deny| FS[Fail Safe]
+    P -->|needs_review| R[Needs Review]
+  `}
+/>
+
+## 2. Terminology Mapping Across Frameworks
+
+| UAICP Primitive | LangGraph-style | AutoGen | CrewAI | OpenAI Agents SDK |
+| --- | --- | --- | --- | --- |
+| Envelope | Graph State | Task Context | Task Context | Run Input |
+| Evidence | Node Outputs | Tool Events | Crew Step Artifacts | Tool Calls + Messages |
+| Verification | Verify Node | Validation Step | Completion Check | Verifier Call |
+| Policy Gate | Approval Node | Approval Metadata Gate | Risk + Approval Check | Write-Risk Gate |
+| Finalization | Terminal Transition | Final Answer Stage | Output Finalization | Output Publish |
+
+<DiagramViewer
+  title="2A. Mapping Flow: LangGraph + AutoGen"
+  minWidth={900}
+  mermaid={`flowchart TB
+    U1[UAICP Envelope] --> L1[LangGraph Graph State]
+    U1 --> A1[AutoGen Task Context]
+
+    U2[UAICP Evidence] --> L2[LangGraph Node Outputs]
+    U2 --> A2[AutoGen Tool Events]
+
+    U3[UAICP Verification] --> L3[LangGraph Verify Node]
+    U3 --> A3[AutoGen Validation Step]
+
+    U4[UAICP Policy Gate] --> L4[LangGraph Approval Node]
+    U4 --> A4[AutoGen Approval Metadata]
+  `}
+/>
+
+<DiagramViewer
+  title="2B. Mapping Flow: CrewAI + OpenAI Agents SDK"
+  minWidth={900}
+  mermaid={`flowchart TB
+    U1[UAICP Envelope] --> C1[CrewAI Task Context]
+    U1 --> O1[OpenAI Run Input]
+
+    U2[UAICP Evidence] --> C2[CrewAI Step Artifacts]
+    U2 --> O2[OpenAI Tool Calls + Messages]
+
+    U3[UAICP Verification] --> C3[CrewAI Completion Check]
+    U3 --> O3[OpenAI Verifier Call]
+
+    U4[UAICP Policy Gate] --> C4[CrewAI Risk + Approval]
+    U4 --> O4[OpenAI Write-Risk Gate]
+  `}
+/>
+
+## 3. Framework-Specific Flow Patterns
+
+<DiagramViewer
+  title="3A. LangGraph-Style Runtime"
+  minWidth={860}
+  mermaid={`flowchart LR
+    LP[Planner Node] --> LT[Tool Nodes]
+    LT --> LM[mapEnvelope + collectEvidence]
+    LM --> LV[runVerifier]
+    LV --> LPOL[runPolicyGate]
+    LPOL -->|allow| LD[deliver]
+    LPOL -->|needs_review| LNR[needs_review]
+    LPOL -->|deny/fail| LFS[fail_safe]
+  `}
+/>
+
+<DiagramViewer
+  title="3B. AutoGen Runtime"
+  minWidth={860}
+  mermaid={`flowchart LR
+    AT[autogen.run task] --> AM[mapEnvelopeFromTask]
+    AT --> AE[normalizeToolEvents]
+    AM --> AV[runVerifier]
+    AE --> AV
+    AV --> AP[runPolicyGate]
+    AP -->|allow| AD[deliver finalAnswer]
+    AP -->|blocked| AFS[fail_safe]
+  `}
+/>
+
+<DiagramViewer
+  title="3C. CrewAI Runtime"
+  minWidth={860}
+  mermaid={`flowchart LR
+    CR[runCrew taskCtx] --> CM[mapEnvelope]
+    CR --> CE[normalizeCrewEvidence]
+    CM --> CV[runVerifier]
+    CE --> CV
+    CV --> CP[runPolicyGate]
+    CP -->|allow| CD[deliver output]
+    CP -->|needs_review| CNR[reviewRequired]
+    CP -->|deny| CFS[fail_safe]
+  `}
+/>
+
+<DiagramViewer
+  title="3D. OpenAI Agents SDK Runtime"
+  minWidth={860}
+  mermaid={`flowchart LR
+    OR[agent.run input] --> OM[mapEnvelope]
+    OR --> OE[collectRunEvidence]
+    OM --> OV[runVerifier]
+    OE --> OV
+    OV --> OP[runPolicyGate]
+    OP -->|allow| OD[deliver outputText]
+    OP -->|blocked| OFS[fail_safe]
+  `}
+/>
