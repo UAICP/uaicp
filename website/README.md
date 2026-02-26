@@ -19,6 +19,8 @@ This site is the complete reference for:
 ### Specification
 
 - [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
+- Canonical docs source: `../specification/docs/`
+- Sync website mirrors: `npm run sync:docs`
 
 ### Adapter Implementations
 
@@ -46,6 +48,12 @@ npm run start
 ```bash
 npm run build
 npm run serve
+```
+
+## Docs Sync Validation
+
+```bash
+npm run check:docs-sync
 ```
 
 ## License

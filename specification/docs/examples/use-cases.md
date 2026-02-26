@@ -4,19 +4,25 @@ UAICP is designed for workflows where incorrect delivery or uncontrolled writes 
 
 ## Primary Use Cases
 
-- regulated finance operations
-- compliance-sensitive operations requiring replayable audit context
-- high-stakes automation where fail-safe uncertainty is mandatory
+- regulated finance operations with high-risk write actions
+- compliance-sensitive data operations requiring replayable audit traces
+- enterprise agent workflows that must fail safe under uncertainty
 
-## Finance Workflow Comparison
+## Complete Walkthrough: Finance Workflow Comparison
 
-Reference implementation includes a complete comparison across four implementation styles:
+Use this full comparison for practical onboarding:
+
+- [Finance Workflow Comparison](./finance-workflow-comparison.md)
+
+It shows the same workflow implemented as:
 
 1. manual workflow
-2. framework-native agentic workflow
-3. agent implementation without UAICP
-4. agent implementation with UAICP
+2. framework-level agentic workflow
+3. agent implementation without UAICP gates
+4. agent implementation with UAICP gates
 
-Source:
+## Source Code Link
+
+Reference implementation source:
 
 - [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

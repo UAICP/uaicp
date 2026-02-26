@@ -4,7 +4,9 @@
   "description": "UAICP documentation website for the open reliability contract",
   "main": "index.js",
   "scripts": {
-    "build": "docusaurus build",
+    "sync:docs": "node ./scripts/sync-spec-docs.mjs",
+    "check:docs-sync": "node ./scripts/sync-spec-docs.mjs --check",
+    "build": "npm run sync:docs && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -12,8 +14,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "start": "docusaurus start",
-    "dev": "docusaurus start"
+    "start": "npm run sync:docs && docusaurus start",
+    "dev": "npm run sync:docs && docusaurus start"
   },
   "dependencies": {
     "@docusaurus/core": "^3.1.0",

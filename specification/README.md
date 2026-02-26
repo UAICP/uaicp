@@ -17,7 +17,7 @@ UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks
 ## Practitioner Start Path
 
 1. Read the [core specification](docs/specification/specification.md)
-2. Implement the [adapter contract](docs/integration-guides/ADAPTER-CONTRACT.md)
+2. Implement the [adapter contract](docs/integration-guides/adapter-contract.md)
 3. Validate with [compliance tests](tests/COMPLIANCE-TESTS.md) and `npm test`
 4. Compare behavior with the [finance workflow reference fixture](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
 
@@ -37,8 +37,8 @@ Frameworks handle orchestration mechanics. UAICP handles deterministic reliabili
 
 Start in:
 
-- [docs/integration-guides/ADAPTER-CONTRACT.md](docs/integration-guides/ADAPTER-CONTRACT.md)
-- [docs/integration-guides/LANGGRAPH-ADAPTER-EXAMPLE.md](docs/integration-guides/LANGGRAPH-ADAPTER-EXAMPLE.md)
+- [docs/integration-guides/adapter-contract.md](docs/integration-guides/adapter-contract.md)
+- [docs/integration-guides/langgraph-adapter-example.md](docs/integration-guides/langgraph-adapter-example.md)
 
 ## Contributor Tracking
 
