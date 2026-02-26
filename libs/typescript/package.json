@@ -1,0 +1,15 @@
+{
+    "name": "uaicp-typescript-workspace",
+    "version": "0.3.0",
+    "private": true,
+    "description": "UAICP Native TypeScript Adapters and Core Primitives",
+    "workspaces": [
+        "core",
+        "adapter-*"
+    ],
+    "scripts": {
+        "build": "npm run build -ws",
+        "test": "npm run test -ws",
+        "lint": "npm run lint -ws"
+    }
+}

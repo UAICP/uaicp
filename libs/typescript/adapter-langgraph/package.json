@@ -1,0 +1,19 @@
+{
+    "name": "@uaicp/adapter-langgraph",
+    "version": "0.3.0",
+    "description": "UAICP Reliability Protocol Adapter for LangGraph",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist"
+    },
+    "dependencies": {
+        "@uaicp/core": "*",
+        "@langchain/core": "^0.2.0",
+        "@langchain/langgraph": "^0.0.28"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.3"
+    }
+}
