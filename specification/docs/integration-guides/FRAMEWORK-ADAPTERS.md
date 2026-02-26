@@ -14,10 +14,10 @@ Every adapter must provide:
 
 ## Framework Mapping Notes
 
-- LangGraph-style runtimes: use an explicit verify/policy node before terminal delivery.
-- AutoGen: wrap task completion with verifier and policy gates.
-- CrewAI: gate task completion and high-risk side effects with UAICP decisions.
-- OpenAI Agents SDK: wrap run lifecycle events and block delivery on failed gates.
+- **LangGraph & Vercel AI SDK (Streaming Run-loops):** Map token streaming boundaries to `streamPartial` and wrap `is_final` triggers with the main verify/policy node before terminal delivery.
+- **OpenAI Swarm & AutoGen (Multi-Agent Hierarchies):** Explicitly map the orchestrator's recursive calls into the `parent_trace_id` of the UaicpEnvelope. Wrap swarm handoff events and final task completion with verifier and policy gates.
+- **CrewAI or Tool-Calling Agents:** Gate task completion and high-risk side effects with UAICP decisions. Enforce `rollback_action` structures on all high-risk writes.
+- **Anthropic Computer Use:** Treat screenshot diff outputs or stdout logs as opaque Evidence payloads (with semantic hashes) to be graded by the Verification Gate.
 
 ## Validation Expectation
 

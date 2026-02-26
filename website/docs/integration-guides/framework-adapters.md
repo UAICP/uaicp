@@ -24,6 +24,7 @@ A LangGraph-style workflow typically maps as:
 - node outputs -> evidence objects
 - verification node -> verifier + policy gates
 - terminal node -> `deliver` only when gates pass
+- streaming boundaries -> map UI partial chunks to the `streamPartial` adapter hook
 
 See: [LangGraph Adapter Example](./langgraph-adapter-example.md).
 
@@ -33,7 +34,8 @@ The same contract applies even when orchestration APIs differ:
 
 - wrap tool execution events as evidence
 - run explicit verify gate before final response
-- enforce policy gate before any high-risk write
+- enforce policy gate before any high-risk write, demanding `rollback_action` structures
+- map hierarchy handoff events to nested envelopes using `parent_trace_id`
 - return `fail_safe` with reason codes when gates fail
 
 See examples:

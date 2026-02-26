@@ -20,8 +20,10 @@ interface UaicpAdapter {
     approvalToken?: string;
     allowedControlClasses?: ('autonomous' | 'human-supervised' | 'human-directed')[];
     trustTierAllowlist?: string[];
+    rollbackPayload?: unknown;
   }): { decision: GateDecision; reasons: string[] };
   emitAuditEvent(event: UaicpAuditEvent): void;
+  streamPartial(chunk: { id: string, content: string, is_final: boolean }): void;
 }
 ```
 
@@ -44,10 +46,10 @@ No delivery should occur before required gates complete.
 
 ## Required High-Risk Write Rule
 
-For high-risk write actions, when approval metadata is absent:
+For high-risk write actions, when approval metadata or rollback metadata is absent:
 
 - return `needs_review`
-- include reason `APPROVAL_REQUIRED`
+- include reason `APPROVAL_REQUIRED` or `ROLLBACK_REQUIRED`
 - block side effects
 
 If `verification.status` is not `pass`, adapter policy gating must not return `allow`.
