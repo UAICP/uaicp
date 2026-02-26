@@ -31,13 +31,13 @@ framework request/context
 
 Use the concrete finance comparison implementation:
 
-- source: [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
-- runner: [run-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/run-comparison.ts)
+- source: [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
+- runner: [run-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/run-comparison.ts)
 
 Run locally:
 
 ```bash
-cd uaicp-reference-impl
+cd reference-impl/
 npm install
 npm run example:finance
 ```
@@ -56,5 +56,4 @@ An adapter is complete when it can:
 
 Post-`v0.2` enhancements are tracked in:
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
-- [Reference Implementation Issues](https://github.com/UAICP/uaicp-reference-impl/issues)
+- [UAICP Issues](https://github.com/UAICP/uaicp/issues)

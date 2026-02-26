@@ -6,7 +6,7 @@ This repository hosts the public documentation website for UAICP.
 
 1. Open an issue for your proposed change.
 2. Link the issue in your PR.
-3. Keep content aligned with `uaicp_specification` source-of-truth docs.
+3. Keep content aligned with `specification/` source-of-truth docs.
 4. Include validation notes (build/link/content checks).
 
 ## Definition of Done

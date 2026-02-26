@@ -27,4 +27,4 @@ This roadmap is status-based and issue-driven. It does not use timeline/date com
 
 Roadmap execution is tracked in repository issues:
 
-- https://github.com/UAICP/uaicp-reference-impl/issues
+- https://github.com/UAICP/uaicp/issues

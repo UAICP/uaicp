@@ -26,7 +26,7 @@ This roadmap tracks post-`v0.2` enhancements. It is issue-driven and does not us
 
 Roadmap execution is tracked in GitHub issues:
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
+- [Specification Issues](https://github.com/UAICP/uaicp/issues)
 
 Recommended labels:
 

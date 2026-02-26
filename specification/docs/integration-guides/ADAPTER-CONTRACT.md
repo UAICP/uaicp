@@ -54,4 +54,4 @@ If `verification.status` is not `pass`, adapter policy gating must not return `a
 
 ## Reference Implementation
 
-- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

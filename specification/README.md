@@ -19,7 +19,7 @@ UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks
 1. Read the [core specification](docs/specification/specification.md)
 2. Implement the [adapter contract](docs/integration-guides/ADAPTER-CONTRACT.md)
 3. Validate with [compliance tests](tests/COMPLIANCE-TESTS.md) and `npm test`
-4. Compare behavior with the [finance workflow reference fixture](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
+4. Compare behavior with the [finance workflow reference fixture](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)
 
 ## Why UAICP Is a Separate Layer
 
@@ -44,7 +44,7 @@ Start in:
 
 Post-`v0.2` enhancements are tracked in:
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
+- [Specification Issues](https://github.com/UAICP/uaicp/issues)
 - [Roadmap](PROJECT-ROADMAP.md)
 - [Implementation Workstream Map](docs/specification/implementation-plan.md)
 

@@ -16,18 +16,17 @@ This site is the complete reference for:
 
 Canonical protocol source:
 
-- [uaicp_specification](https://github.com/UAICP/uaicp_specification)
+- [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
 Reference implementation source:
 
-- [uaicp-reference-impl](https://github.com/UAICP/uaicp-reference-impl)
+- [reference-impl/](https://github.com/UAICP/uaicp/tree/main/reference-impl)
 
 ## Contributor Tracking
 
 Post-`v0.2` enhancements are tracked in GitHub issues:
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
-- [Reference Implementation Issues](https://github.com/UAICP/uaicp-reference-impl/issues)
+- [UAICP Issues](https://github.com/UAICP/uaicp/issues)
 
 ## Local Development
 

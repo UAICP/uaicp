@@ -10,7 +10,7 @@ This repository provides concrete, composable building blocks and examples for e
 
 Protocol source of truth:
 
-- [uaicp_specification](https://github.com/UAICP/uaicp_specification)
+- [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
 ## Implemented Modules
 
@@ -69,7 +69,7 @@ This repository uses status-based roadmap tracking, not timeline/date planning.
 Tracking:
 
 - `ROADMAP.md`
-- [Issues](https://github.com/UAICP/uaicp-reference-impl/issues)
+- [Issues](https://github.com/UAICP/uaicp/issues)
 
 ## Local Private Notes
 

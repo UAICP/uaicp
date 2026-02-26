@@ -57,4 +57,4 @@ In progress:
 
 ## Tracking
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
+- [Specification Issues](https://github.com/UAICP/uaicp/issues)

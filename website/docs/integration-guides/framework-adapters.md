@@ -44,4 +44,4 @@ An adapter is valid when it produces the same gate outcomes as the reference beh
 
 Use this finance workflow comparison as a baseline fixture:
 
-- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

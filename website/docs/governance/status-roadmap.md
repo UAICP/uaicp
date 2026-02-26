@@ -11,7 +11,7 @@
 - core specification and invariant model
 - schema contracts (envelope, evidence, verification report)
 - adapter contract and framework adapter guidance
-- runnable finance workflow comparison in `uaicp-reference-impl`
+- runnable finance workflow comparison in `reference-impl/`
 
 ## Implementation Path
 
@@ -25,5 +25,4 @@ For adoption, start with:
 
 Enhancements after `v0.2` are tracked in GitHub issues:
 
-- [Specification Issues](https://github.com/UAICP/uaicp_specification/issues)
-- [Reference Implementation Issues](https://github.com/UAICP/uaicp-reference-impl/issues)
+- [UAICP Issues](https://github.com/UAICP/uaicp/issues)

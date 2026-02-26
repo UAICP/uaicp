@@ -25,4 +25,4 @@ Adapter behavior is valid when equivalent inputs produce equivalent gate outcome
 
 Reference fixture:
 
-- [workflow-comparison.ts](https://github.com/UAICP/uaicp-reference-impl/blob/main/src/examples/finance/workflow-comparison.ts)
+- [workflow-comparison.ts](https://github.com/UAICP/uaicp/blob/main/reference-impl/src/examples/finance/workflow-comparison.ts)

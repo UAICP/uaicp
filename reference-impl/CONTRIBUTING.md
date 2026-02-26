@@ -5,7 +5,7 @@
 This repository hosts reusable runtime primitives for the UAICP contract.
 
 Protocol-level behavior changes must be coordinated in:
-- https://github.com/UAICP/uaicp_specification
+- [specification/](https://github.com/UAICP/uaicp/tree/main/specification)
 
 ## Workflow
 
