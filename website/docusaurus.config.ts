@@ -11,7 +11,7 @@ const config: Config = {
   baseUrl: '/',
 
   organizationName: 'UAICP',
-  projectName: 'uaicp_website',
+  projectName: 'uaicp',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -27,13 +27,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/UAICP/uaicp_website/edit/main/',
+          editUrl: 'https://github.com/UAICP/uaicp/edit/main/website/',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/UAICP/uaicp_website/edit/main/',
+          editUrl: 'https://github.com/UAICP/uaicp/edit/main/website/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -58,7 +58,7 @@ const config: Config = {
         {to: '/docs/examples/use-cases', label: 'Examples', position: 'left'},
         {to: '/docs/governance/overview', label: 'Governance', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
-        {href: 'https://github.com/UAICP/uaicp_specification', label: 'GitHub', position: 'right'},
+        {href: 'https://github.com/UAICP/uaicp', label: 'GitHub', position: 'right'},
       ],
     },
     footer: {
@@ -84,8 +84,9 @@ const config: Config = {
         {
           title: 'Repository',
           items: [
-            {label: 'Specification Repo', href: 'https://github.com/UAICP/uaicp_specification'},
-            {label: 'Reference Impl Repo', href: 'https://github.com/UAICP/uaicp-reference-impl'},
+            {label: 'Monorepo', href: 'https://github.com/UAICP/uaicp'},
+            {label: 'Specification', href: 'https://github.com/UAICP/uaicp/tree/main/specification'},
+            {label: 'Reference Impl', href: 'https://github.com/UAICP/uaicp/tree/main/reference-impl'},
           ],
         },
       ],

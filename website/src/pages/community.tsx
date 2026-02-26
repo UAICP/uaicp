@@ -23,13 +23,13 @@ const CommunityPage = () => {
                 <li>Submit a PR with docs/schema/test updates as needed.</li>
               </ol>
               <p>
-                Start from open issues and pick a workstream-labeled task in the specification or reference implementation repositories.
+                Start from open issues and pick a workstream-labeled task in the monorepo.
               </p>
               <div className="button-group">
-                <Link className="button button--primary" href="https://github.com/UAICP/uaicp_specification/issues">
+                <Link className="button button--primary" href="https://github.com/UAICP/uaicp/issues">
                   Open Issue
                 </Link>
-                <Link className="button button--secondary" href="https://github.com/UAICP/uaicp_specification/pulls">
+                <Link className="button button--secondary" href="https://github.com/UAICP/uaicp/pulls">
                   View PRs
                 </Link>
               </div>
@@ -43,18 +43,18 @@ const CommunityPage = () => {
               <h2>Repositories</h2>
               <ul>
                 <li>
-                  <a href="https://github.com/UAICP/uaicp_specification" target="_blank" rel="noopener noreferrer">
-                    uaicp_specification
+                  <a href="https://github.com/UAICP/uaicp" target="_blank" rel="noopener noreferrer">
+                    uaicp
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/UAICP/uaicp-reference-impl" target="_blank" rel="noopener noreferrer">
-                    uaicp-reference-impl
+                  <a href="https://github.com/UAICP/uaicp/tree/main/specification" target="_blank" rel="noopener noreferrer">
+                    specification/
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/UAICP/uaicp_website" target="_blank" rel="noopener noreferrer">
-                    uaicp_website
+                  <a href="https://github.com/UAICP/uaicp/tree/main/reference-impl" target="_blank" rel="noopener noreferrer">
+                    reference-impl/
                   </a>
                 </li>
               </ul>

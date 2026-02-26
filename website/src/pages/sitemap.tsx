@@ -44,8 +44,9 @@ export default function Sitemap(): JSX.Element {
               <h3>Project</h3>
               <ul>
                 <li><Link to="/blog">Blog</Link></li>
-                <li><a href="https://github.com/UAICP/uaicp_specification" target="_blank" rel="noopener noreferrer">Specification Repository</a></li>
-                <li><a href="https://github.com/UAICP/uaicp-reference-impl" target="_blank" rel="noopener noreferrer">Reference Implementation Repository</a></li>
+                <li><a href="https://github.com/UAICP/uaicp" target="_blank" rel="noopener noreferrer">Monorepo</a></li>
+                <li><a href="https://github.com/UAICP/uaicp/tree/main/specification" target="_blank" rel="noopener noreferrer">Specification</a></li>
+                <li><a href="https://github.com/UAICP/uaicp/tree/main/reference-impl" target="_blank" rel="noopener noreferrer">Reference Implementation</a></li>
               </ul>
             </div>
           </div>

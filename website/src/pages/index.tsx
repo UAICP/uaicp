@@ -24,11 +24,11 @@ function HomepageHeader() {
           <Link className="button button--primary button--lg" to="/docs/integration-guides/overview">
             Integration Guides
           </Link>
-          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp_specification">
-            Specification Repo
+          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp/tree/main/specification">
+            Specification
           </Link>
-          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp-reference-impl">
-            Reference Impl Repo
+          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp/tree/main/reference-impl">
+            Reference Impl
           </Link>
         </div>
       </div>
