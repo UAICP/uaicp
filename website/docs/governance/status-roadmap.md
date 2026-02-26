@@ -3,6 +3,7 @@
 ## Current Release
 
 - protocol version: `v0.3`
+- package release: `0.3.1` (published on February 26, 2026)
 - practitioner status: ready to implement
 - documentation status: complete implementation guidance is published on this site
 
@@ -18,9 +19,9 @@
 
 | Language | Framework | Package | Tests |
 |----------|-----------|---------|-------|
-| TypeScript | LangGraph | `@uaicp/adapter-langgraph` | 12 |
-| Python | Microsoft AutoGen v0.4 | `uaicp-adapter-autogen` | 23 |
-| Rust | Rig | `uaicp-adapter-rig` | 17 |
+| TypeScript | LangGraph | `@uaicp/adapter-langgraph` (`0.3.1`) | 12 |
+| Python | Microsoft AutoGen v0.4 | `uaicp-adapter-autogen` (`0.3.1`) | 23 |
+| Rust | Rig | `uaicp-adapter-rig` (`0.3.1`) | 17 |
 
 ## Implementation Path
 

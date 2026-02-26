@@ -15,6 +15,14 @@ This repository hosts the public documentation website for UAICP.
 - Content updates are technically accurate
 - Navigation/sitemap remains coherent
 
+## Repository Protection Requirements
+
+- Keep `main` branch protection enabled in GitHub settings.
+- Require pull requests for `main` (no direct pushes).
+- Require status checks before merge, including `Website CI`.
+- Require CODEOWNERS review for website/docs and workflow changes.
+- Restrict who can bypass branch protections to repository admins only.
+
 ## Local Private Notes
 
 Use `.private/` for local-only working notes. Only `.private/.gitkeep` is tracked.

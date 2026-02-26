@@ -1,0 +1,10 @@
+# Default owner for all repository paths
+* @rishirandhawa
+
+# Website and docs ownership
+/website/ @rishirandhawa
+/specification/docs/ @rishirandhawa
+/website/docs/ @rishirandhawa
+
+# CI and deployment workflow ownership
+/.github/workflows/ @rishirandhawa

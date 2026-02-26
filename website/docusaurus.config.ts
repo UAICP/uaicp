@@ -33,13 +33,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/UAICP/uaicp/edit/main/website/',
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/UAICP/uaicp/edit/main/website/',
         },
         theme: {
           customCss: './src/css/custom.css',

@@ -1,0 +1,48 @@
+name: Website CI
+
+on:
+  pull_request:
+    paths:
+      - "website/**"
+      - "specification/docs/**"
+      - ".github/workflows/website-ci.yml"
+      - ".github/workflows/website-pages-deploy.yml"
+  push:
+    branches: [main]
+    paths:
+      - "website/**"
+      - "specification/docs/**"
+      - ".github/workflows/website-ci.yml"
+      - ".github/workflows/website-pages-deploy.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: website/.nvmrc
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Docs sync check
+        run: npm run check:docs-sync
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
