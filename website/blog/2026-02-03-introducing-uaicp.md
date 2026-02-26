@@ -7,8 +7,6 @@ description: UAICP defines an open reliability contract for agentic workflows, n
 image: /img/brand/uaicp-social-card.svg
 ---
 
-<img src="/img/brand/uaicp-logo.svg" alt="UAICP Logo" width="120" />
-
 # Introducing UAICP v0.3: The Universal Reliability Contract
 
 Agentic systems are rapidly moving from assistive conversational chat to autonomous workflow execution where models trigger real-world side effects. 
