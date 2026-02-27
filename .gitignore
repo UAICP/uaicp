@@ -25,3 +25,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Local backup workdirs
+*.edit_backups/
+website.edit_backups/
