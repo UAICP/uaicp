@@ -47,7 +47,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/uaicp-social-card.svg',
+    image: 'img/uaicp-social-card.png',
     navbar: {
       title: 'UAICP',
       logo: {

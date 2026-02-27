@@ -4,7 +4,7 @@ title: "UAICP v0.3 Is Live: Reliability Contract for Agentic Workflows"
 authors: [uaicp_team]
 tags: [uaicp, reliability, verification, orchestration, agents]
 description: UAICP defines an open reliability contract for agentic workflows, with published adapters and core packages across TypeScript, Python, and Rust.
-image: /img/brand/uaicp-social-card.svg
+image: /img/uaicp-social-card.png
 ---
 
 Agentic systems are moving from conversational assistance to autonomous workflow execution where model outputs can trigger real-world side effects.
