@@ -13,9 +13,9 @@ function HomepageHeader() {
       <div className="container">
         <div className={styles.statusBadge}>Protocol v0.3</div>
         <h1 className="hero__title">UAICP</h1>
-        <p className={styles.heroName}>Universal Agent Integrity & Control Protocol</p>
+        <p className={styles.heroName}>Universal Agentic Interoperability Control Protocol</p>
         <p className={styles.heroDescription}>
-          Decoupled reliability contract for controlled agent execution.
+          Open controls for agent reliability.
         </p>
         <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/docs/specification/introduction">
@@ -24,8 +24,8 @@ function HomepageHeader() {
           <Link className="button button--primary button--lg" to="/docs/integration-guides/overview">
             Integration Guides
           </Link>
-          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp/tree/main/specification">
-            Specification
+          <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp">
+            Source Code
           </Link>
           <Link className="button button--secondary button--lg" href="https://github.com/UAICP/uaicp/tree/main/reference-impl">
             Reference Impl
@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
                   <h2 className={styles.sectionTitle}>Reliability by Contract</h2>
                   <p className={styles.sectionDescription}>
                     UAICP is a separate control layer that sits under frameworks like LangGraph, Microsoft Agent Framework style runtimes, AutoGen, and CrewAI.
-                    It standardizes evidence contracts, verification contracts, and policy gates so delivery cannot bypass required checks.
+                    It standardizes evidence contracts, verification contracts, and policy gates that runtimes enforce on protected execution paths.
                   </p>
                 </div>
               </div>
@@ -67,6 +67,15 @@ export default function Home(): JSX.Element {
             <div className="container">
               <div className="row">
                 <div className="col col--8 col--offset-2">
+                  <h2 className={styles.sectionTitle}>Open protocol. Enterprise relevance.</h2>
+                  <p className={styles.sectionDescription}>
+                    Started by Prismworks AI, UAICP gives developers portable controls for agent reliability.
+                    Use it with your own runtime and policy systems. Prismworks builds Databridle for enterprise
+                    agent authority, action controls, and operational evidence.
+                  </p>
+                  <p className={styles.sectionDescription}>
+                    <Link to="/docs/governance/ecosystem">Explore the open-source and enterprise boundary</Link>
+                  </p>
                   <h2 className={styles.sectionTitle}>Get Started</h2>
                   <p className={styles.sectionDescription}>
                     Start with the protocol and adapter docs, then run the finance workflow comparison in the reference implementation.

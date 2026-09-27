@@ -46,6 +46,7 @@ const sidebars: SidebarsConfig = {
       label: 'Governance',
       items: [
         'governance/overview',
+        'governance/ecosystem',
         'governance/status-roadmap',
         'governance/v0.4-roadmap',
         'governance/v0.5-roadmap',

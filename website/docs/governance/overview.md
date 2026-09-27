@@ -33,3 +33,7 @@ Contract changes require synchronized updates across:
 2. propose protocol or schema changes
 3. review for compatibility and conformance impact
 4. merge with migration notes when applicable
+
+## Project origin and ecosystem
+
+Prismworks AI initiated UAICP as an open-source contribution. The protocol remains independently usable and vendor-neutral. See [Open Source and Enterprise Deployment](ecosystem.md) for the relationship to Databridle and the commercial boundary.

@@ -53,9 +53,11 @@
   
   <!-- Title Text -->
   <text x="500" y="250" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#2d3748">UAICP</text>
-  <text x="500" y="320" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="400" fill="#4a5568">Universal Agent Integrity &amp; Control Protocol</text>
-  <text x="500" y="380" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="300" fill="#718096">Open standard for policy-aware coordination</text>
-  
+  <text x="500" y="315" font-family="Arial, sans-serif" font-size="26" fill="#4a5568">Universal Agentic Interoperability</text>
+  <text x="500" y="352" font-family="Arial, sans-serif" font-size="26" fill="#4a5568">Control Protocol</text>
+  <text x="500" y="409" font-family="Arial, sans-serif" font-size="23" fill="#4a5568">Open controls for agent reliability.</text>
+  <text x="500" y="453" font-family="Arial, sans-serif" font-size="18" fill="#4a5568">An open-source initiative started by Prismworks AI</text>
+
   <!-- Decorative elements -->
   <circle cx="1000" cy="150" r="4" fill="url(#socialGradient)" opacity="0.6"/>
   <circle cx="1050" cy="200" r="6" fill="url(#socialGradient)" opacity="0.4"/>

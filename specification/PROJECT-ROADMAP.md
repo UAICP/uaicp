@@ -1,5 +1,7 @@
 # UAICP Roadmap
 
+> Current priority: [monorepo implementation plan](../IMPLEMENTATION-PLAN.md). Normalize baseline/native schemas and verify cross-language fixtures before expanding adapters. Existing completion entries refer to local primitives, not a deployed protected integration.
+
 This roadmap tracks post-`v0.3` enhancements. It is issue-driven and does not use timeline/date commitments.
 
 ## Complete

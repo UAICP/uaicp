@@ -1,66 +1,20 @@
-# Release Status
+# Implementation status and roadmap
 
-## Current Release
+Reviewed 2026-09-24 from the local monorepo. UAICP provides open, vendor-neutral reliability contracts, schemas, libraries and reference primitives. Public registry publication and the previously reported 52-adapter-test total were not reverified in this review.
 
-- protocol version: `v0.3`
-- package release: `0.3.1` (published on February 26, 2026)
-- practitioner status: ready to implement
-- documentation status: complete implementation guidance is published on this site
+## Verified locally
 
-## Included in v0.3
+- Reference implementation: 21 passing tests, including existing invariant primitives.
+- Baseline specification conformance runner: 12 passing fixtures.
+- Native TypeScript envelopes and the baseline schema differ in state names, required identity/timestamp fields and outcome semantics. Passing separate suites does not establish interchangeability.
 
-- core specification and invariant model
-- schema contracts (envelope, evidence, verification report)
-- polyglot adapter ecosystem (TypeScript, Python, Rust)
-- **52 passing tests** across all official adapters
-- adapter contract with language-specific implementations
+## Next release priorities
 
-## Official Adapters
+1. Specify explicit native-to-baseline mappings; preserve missing identity as invalid or unknown rather than inventing it.
+2. Share positive and negative fixtures across TypeScript, Python and Rust; distinguish policy verdicts from execution outcomes.
+3. Demonstrate authenticated approval and exact-request binding through an optional host adapter. Metadata presence alone is not enforcement.
+4. Verify package builds, releases and supported framework versions before publishing a compatibility matrix.
 
-| Language | Framework | Package | Tests |
-|----------|-----------|---------|-------|
-| TypeScript | LangGraph | `@uaicp/adapter-langgraph` (`0.3.1`) | 12 |
-| Python | Microsoft AutoGen v0.4 | `uaicp-adapter-autogen` (`0.3.1`) | 23 |
-| Rust | Rig | `uaicp-adapter-rig` (`0.3.1`) | 17 |
+Databridle is an optional consumer. It is not required for UAICP conformance, and commercial policy stays outside the normative protocol.
 
-## Implementation Path
-
-For adoption, start with:
-
-- [Core Specification](../specification/specification.md)
-- [Adapter Contract](../integration-guides/adapter-contract.md)
-- [Adapter Matrix](../integration-guides/adapter-matrix.md)
-
-## Quick Start
-
-```bash
-# Install published packages
-
-# TypeScript
-npm install @uaicp/core @uaicp/adapter-langgraph
-
-# Python
-pip install uaicp-core uaicp-adapter-autogen
-
-# Rust
-cargo add uaicp-core uaicp-adapter-rig
-```
-
-For contributor/source validation in this monorepo:
-
-```bash
-# TypeScript
-cd libs/typescript && npm install && npm test
-
-# Python
-cd libs/python && pip install -e core/ -e adapter-autogen/ && pytest adapter-autogen/tests/
-
-# Rust
-cd libs/rust && cargo test --workspace
-```
-
-## Contributor Tracking
-
-Enhancements after `v0.3` are tracked in GitHub issues:
-
-- [UAICP Issues](https://github.com/UAICP/uaicp/issues)
+Start with the [core specification](../specification/specification.md), [adapter contract](../integration-guides/adapter-contract.md) and [adapter matrix](../integration-guides/adapter-matrix.md). The repository-root `IMPLEMENTATION-PLAN.md` owns delivery scope.

@@ -12,7 +12,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UAICP/uaicp_specification.git"
+    "url": "https://github.com/UAICP/uaicp.git",
+    "directory": "specification"
   },
   "keywords": [
     "uaicp",
@@ -26,7 +27,7 @@
   "author": "Prismworks AI",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/UAICP/uaicp_specification/issues"
+    "url": "https://github.com/UAICP/uaicp/issues"
   },
   "homepage": "https://uaicp.org",
   "devDependencies": {

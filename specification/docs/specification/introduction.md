@@ -1,6 +1,6 @@
 # Introduction to UAICP
 
-UAICP is the **Universal Agent Integrity & Control Protocol**.
+UAICP is the **Universal Agentic Interoperability Control Protocol**.
 
 UAICP defines a reliability contract for agentic workflows so systems are:
 
@@ -26,16 +26,17 @@ UAICP is framework-neutral and model-neutral.
 
 ## Operational Risk Coverage
 
-UAICP addresses production risks that become acute in regulated and high-impact workflows:
+UAICP defines requirements for protected workflow paths:
 
-- no silent hallucination in final outputs
-- no unverified delivery when evidence is missing
-- no high-risk write action without policy and approval requirements
-- no black-box execution without replayable audit context
+- required evidence before delivery
+- explicit verification results and uncertainty reasons
+- policy and approval checks before high-risk writes
+- attributable execution records
+
+Implementations must enforce these requirements at the actual execution boundary. Agent-provided metadata alone cannot establish identity, approval, or authority.
 
 ## Core Reliability Outcome
 
-UAICP systems must produce outputs that are either:
+A conforming runtime delivers when required evidence and verifier checks pass. When they do not, it returns explicit uncertainty and applies the specified fail-safe behavior.
 
-- **correct**, with required evidence and verification, or
-- **explicitly uncertain**, with reason codes and no unsafe side effects
+Verification establishes what the configured checks demonstrate. It does not guarantee factual correctness, prevent bypass through unmediated tools, or reverse completed side effects.

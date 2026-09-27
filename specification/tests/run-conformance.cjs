@@ -23,7 +23,7 @@ const messageEnvelopeSchema = readJson('schema/message-envelope.schema.json');
 const evidenceObjectSchema = readJson('schema/evidence-object.schema.json');
 const verificationReportSchema = readJson('schema/verification-report.schema.json');
 
-const adapterContractDoc = readText('docs/integration-guides/ADAPTER-CONTRACT.md');
+const adapterContractDoc = readText('docs/integration-guides/adapter-contract.md');
 
 const fixtures = {
   envelopeValid: readJson('tests/fixtures/message-envelope.valid.json'),
@@ -114,21 +114,22 @@ runValidationCheck(
   false,
 );
 
-// 4) Policy Gate Compliance
+// 4) Policy contract documentation checks. Runtime behavior is tested by the
+// adapter and reference-implementation suites; these checks do not execute gates.
 addCheck(
   'Policy Gate Compliance',
   'adapter_contract_has_policy_gate_signature',
-  adapterContractDoc.includes('runPolicyGate(params') &&
-    adapterContractDoc.includes('writeRisk') &&
-    adapterContractDoc.includes('approvalToken') &&
-    adapterContractDoc.includes('action') &&
-    adapterContractDoc.includes('resource'),
+  adapterContractDoc.includes('enforcePolicy(envelope: MessageEnvelope): Promise<PolicyResult>') &&
+    adapterContractDoc.includes('verifyGates(envelope: MessageEnvelope): Promise<boolean>'),
   null,
 );
 addCheck(
   'Policy Gate Compliance',
   'adapter_contract_has_approval_required_rule',
-  adapterContractDoc.includes('APPROVAL_REQUIRED') && adapterContractDoc.includes('needs_review'),
+  adapterContractDoc.includes('APPROVAL_REQUIRED') &&
+    adapterContractDoc.includes('ROLLBACK_REQUIRED') &&
+    adapterContractDoc.includes('PolicyResult { allowed: false }') &&
+    adapterContractDoc.includes('block side effects'),
   null,
 );
 

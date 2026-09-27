@@ -1,8 +1,8 @@
 # UAICP Specification (v0.3)
 
-UAICP stands for **Universal Agent Integrity & Control Protocol**.
+UAICP stands for **Universal Agentic Interoperability Control Protocol**.
 
-UAICP is an open reliability contract for agentic workflow execution. It standardizes a control layer that forces systems to be **correct or explicitly uncertain**.
+UAICP is an open reliability contract for agentic workflow execution. It standardizes evidence, verification, and policy requirements for protected workflow paths, with explicit uncertainty when required checks cannot establish readiness.
 
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
 

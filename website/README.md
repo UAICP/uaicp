@@ -2,7 +2,7 @@
 
 Public documentation site for UAICP.
 
-UAICP is the open-source reliability contract for agentic workflows.
+UAICP (Universal Agentic Interoperability Control Protocol) is the open reliability contract for agent workflows.
 UAICP is an open-source contribution initiated by **Prismworks AI** ([prismworks.ai](https://prismworks.ai)) and developed with community contributions.
 
 ## Documentation Scope
@@ -13,6 +13,8 @@ This site is the complete reference for:
 - adapter contract and framework-specific adapter guidance
 - polyglot adapter ecosystem (TypeScript, Python, Rust)
 - governance and contribution entry points
+
+Naming and public scope are defined in [POSITIONING.md](../POSITIONING.md). The [ecosystem page](docs/governance/ecosystem.md) explains the independently usable protocol and its relationship to Prismworks and Databridle.
 
 ## Canonical Sources
 

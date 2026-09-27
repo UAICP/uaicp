@@ -29,3 +29,8 @@ node_modules/
 # Local backup workdirs
 *.edit_backups/
 website.edit_backups/
+
+# Generated package output and local agent state
+libs/**/dist/
+.ai-context/
+*.tsbuildinfo

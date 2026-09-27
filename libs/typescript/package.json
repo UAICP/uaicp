@@ -8,9 +8,9 @@
         "adapter-*"
     ],
     "scripts": {
-        "build": "npm run build -ws",
-        "test": "npm run test -ws",
-        "lint": "npm run lint -ws"
+        "build": "npm run build --workspace=@uaicp/core && npm run build --workspace=@uaicp/adapter-langgraph",
+        "test": "npm run build && npm run test --workspace=@uaicp/adapter-langgraph",
+        "lint": "tsc --noEmit --project core/tsconfig.json && tsc --noEmit --project adapter-langgraph/tsconfig.json"
     },
     "devDependencies": {
         "vitest": "^4.0.18"
