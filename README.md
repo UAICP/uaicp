@@ -20,7 +20,7 @@ UAICP gives orchestration runtimes deterministic controls for:
 - verifier checks before finalization
 - traceable multi-agent hierarchy via `parent_trace_id`
 
-UAICP is an open-source initiative started by **Prismworks AI**, with community contributions. The protocol remains vendor-neutral and can be implemented independently of Prismworks products.
+UAICP is an open-source initiative started by **Prismworks AI** and open to community contributions. The protocol remains vendor-neutral and can be implemented independently of Prismworks products.
 
 ## Current Status
 
